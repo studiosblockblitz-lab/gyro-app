@@ -78,178 +78,6 @@
     @keyframes think-pulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
 
 
-    /* ── PROXY VIEW ─────────────────────────────────────────────── */
-    #view-proxy { background: var(--bg); }
-    /* Tab bar */
-    #px-tabs {
-      display:flex;align-items:flex-end;padding:6px 14px 0;gap:3px;
-      background:var(--surf);border-bottom:1px solid var(--b0);
-      flex-shrink:0;min-height:42px;overflow-x:auto;scrollbar-width:none;
-    }
-    #px-tabs::-webkit-scrollbar{display:none}
-    .px-tab {
-      display:flex;align-items:center;gap:7px;padding:7px 8px 7px 12px;
-      flex:1 1 140px;min-width:40px;max-width:190px;
-      background:transparent;border:1px solid var(--b0);border-bottom:none;
-      border-radius:8px 8px 0 0;cursor:pointer;
-      transition:background .15s,border-color .15s;
-      font-family:var(--font);position:relative;user-select:none;overflow:hidden;
-    }
-    .px-tab:hover{background:var(--hov)}
-    .px-tab.active{background:var(--bg);border-color:var(--b1);border-bottom-color:var(--bg)}
-    .px-tab.active::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:2px;
-      background:var(--acc);border-radius:2px 2px 0 0;
-    }
-    .px-tab-favicon{width:15px;height:15px;border-radius:3px;flex-shrink:0}
-    .px-tab-title{flex:1;font-size:.78rem;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .px-tab.active .px-tab-title{color:var(--t1);font-weight:600}
-    .px-tab-close{
-      width:17px;height:17px;border-radius:4px;
-      display:flex;align-items:center;justify-content:center;
-      color:var(--t3);font-size:14px;cursor:pointer;
-      transition:background .15s,color .15s;flex-shrink:0;line-height:1;
-    }
-    .px-tab-close:hover{background:rgba(248,113,113,.18);color:#f87171}
-    .px-tab-spinner{
-      width:12px;height:12px;border-radius:50%;
-      border:1.5px solid var(--b1);border-top-color:var(--acc);
-      animation:spin-m .7s linear infinite;flex-shrink:0;
-    }
-    .px-new-tab{
-      width:28px;height:28px;background:transparent;border:1px solid var(--b1);
-      border-radius:7px;color:var(--t2);cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
-      transition:all .15s;flex-shrink:0;align-self:center;margin-bottom:4px;
-    }
-    .px-new-tab svg{width:13px;height:13px;stroke:currentColor;pointer-events:none}
-    .px-new-tab:hover{border-color:var(--acc-ring);color:var(--acc);background:var(--acc-sub)}
-    .px-new-tab:disabled{opacity:.3;pointer-events:none}
-    /* Nav bar */
-    #px-nav {
-      display:flex;align-items:center;gap:6px;padding:8px 14px;
-      background:var(--bg);border-bottom:1px solid var(--b0);flex-shrink:0;
-    }
-    .px-nav-btn {
-      width:30px;height:30px;background:transparent;border:1px solid var(--b0);
-      border-radius:8px;color:var(--t3);cursor:pointer;
-      display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;
-    }
-    .px-nav-btn svg{width:13px;height:13px;stroke:currentColor;pointer-events:none}
-    .px-nav-btn:hover{border-color:var(--b2);color:var(--t1);background:var(--elev)}
-    .px-addr-wrap{flex:1;position:relative;display:flex;align-items:center}
-    #px-addr {
-      width:100%;height:34px;padding:0 36px 0 14px;
-      background:var(--elev);border:1px solid var(--b1);border-radius:10px;
-      color:var(--t1);font-family:var(--font);font-size:.87rem;outline:none;
-      transition:border-color .15s,box-shadow .15s;
-    }
-    #px-addr:focus{border-color:var(--acc-ring);box-shadow:0 0 0 3px var(--acc-sub)}
-    #px-addr::placeholder{color:var(--t3)}
-    #px-home-btn {
-      position:absolute;right:6px;width:26px;height:26px;
-      background:transparent;border:none;color:var(--t3);
-      border-radius:6px;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;transition:color .15s;
-    }
-    #px-home-btn svg{width:13px;height:13px;stroke:currentColor}
-    #px-home-btn:hover{color:var(--acc)}
-    /* Loading bar */
-    #px-load-bar-wrap{height:2px;background:transparent;flex-shrink:0}
-    #px-load-bar{
-      height:100%;width:0%;background:var(--acc);
-      box-shadow:0 0 8px var(--acc-glow);
-      transition:width .2s ease,opacity .15s;border-radius:0 2px 2px 0;
-    }
-    /* Iframe container */
-    #px-frames {
-      flex:1;position:relative;overflow:hidden;background:var(--bg);
-    }
-    #px-frames iframe{
-      width:100%;height:100%;border:none;position:absolute;top:0;left:0;
-    }
-    #px-frames iframe.hidden{display:none}
-    #px-frames iframe.px-loading{filter:blur(10px);transition:filter .35s ease}
-    /* Addr bar loading spinner */
-    .px-addr-spinner {
-      position:absolute;right:34px;width:13px;height:13px;
-      border-radius:50%;border:2px solid var(--b1);border-top-color:var(--acc);
-      animation:spin-m .7s linear infinite;display:none;pointer-events:none;
-    }
-    .px-addr-wrap.loading .px-addr-spinner { display:block; }
-    .px-addr-wrap.loading #px-addr { padding-right: 52px; }
-    /* Search engine pills */
-    .px-engine-grid { display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px }
-    .px-engine-pill {
-      display:flex;align-items:center;gap:9px;padding:10px 13px;
-      background:var(--elev);border:1.5px solid var(--b0);border-radius:10px;
-      cursor:pointer;transition:all .15s;font-family:var(--font);text-align:left;
-      width:100%;
-    }
-    .px-engine-pill:hover { border-color:var(--b2);background:var(--hov); }
-    .px-engine-pill.active { border-color:var(--acc-ring);background:var(--acc-sub); }
-    .px-engine-icon { width:20px;height:20px;border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.85rem; }
-    .px-engine-name { font-size:.83rem;font-weight:600;color:var(--t2); }
-    .px-engine-pill.active .px-engine-name { color:var(--acc); }
-    /* Init screen */
-    #px-init {
-      display:flex;flex:1;align-items:center;justify-content:center;
-      background:var(--bg);min-height:0;
-    }
-    .px-init-card {
-      background:var(--surf);border:1px solid var(--b1);border-radius:18px;
-      padding:32px;max-width:300px;width:90%;text-align:center;box-shadow:var(--sh-md);
-    }
-    .px-init-icon {
-      width:46px;height:46px;border-radius:14px;margin:0 auto 14px;
-      background:var(--acc-sub);border:1px solid var(--acc-ring);
-      display:flex;align-items:center;justify-content:center;color:var(--acc);
-    }
-    .px-init-title{font-size:1rem;font-weight:800;color:var(--t1);letter-spacing:-.3px;margin-bottom:4px}
-    .px-init-sub{font-size:.78rem;color:var(--t2);margin-bottom:20px}
-    .px-init-steps{display:flex;flex-direction:column;gap:9px;text-align:left;margin-bottom:18px}
-    .px-step{display:flex;align-items:center;gap:10px;font-size:.78rem;color:var(--t3);transition:color .3s}
-    .px-step.active{color:var(--t1)}
-    .px-step.done{color:var(--acc)}
-    .px-step-icon{
-      width:19px;height:19px;border-radius:50%;border:1.5px solid var(--b2);
-      display:flex;align-items:center;justify-content:center;
-      font-size:.6rem;color:var(--t3);flex-shrink:0;transition:all .3s;
-    }
-    .px-step.active .px-step-icon{border-color:var(--acc);color:var(--acc)}
-    .px-step.done .px-step-icon{border-color:var(--acc);background:var(--acc-sub);color:var(--acc)}
-    .px-init-prog-wrap{height:3px;background:var(--elev);border-radius:2px;overflow:hidden}
-    #px-init-bar{
-      height:100%;width:0%;background:var(--acc);
-      box-shadow:0 0 6px var(--acc-glow);
-      transition:width .5s cubic-bezier(.4,0,.2,1);border-radius:2px;
-    }
-    /* Server list items in modal */
-    .px-server-item {
-      display:flex;flex-direction:column;gap:4px;padding:11px 14px;
-      background:var(--elev);border:1px solid var(--b0);border-radius:10px;
-      cursor:pointer;transition:border-color .15s,background .15s;
-    }
-    .px-server-item:hover{background:var(--hov);border-color:var(--b1)}
-    .px-server-item.active{border-color:var(--acc-ring);background:var(--acc-sub)}
-    .px-server-item-top{display:flex;align-items:center;justify-content:space-between}
-    .px-server-name{font-size:.86rem;font-weight:600;color:var(--t1)}
-    .px-server-item.active .px-server-name{color:var(--acc)}
-    .px-server-url{font-size:.68rem;color:var(--t3);font-family:var(--mono)}
-    .px-server-right{display:flex;align-items:center;gap:6px}
-    .px-ping-text{font-size:.7rem;color:var(--t3)}
-    .px-status-dot{width:6px;height:6px;border-radius:50%;background:var(--t3);flex-shrink:0;transition:background .2s}
-    .px-status-dot.ok{background:var(--ok);box-shadow:0 0 5px rgba(52,211,153,.5)}
-    .px-status-dot.bad{background:var(--err)}
-    .px-del-btn{
-      padding:2px 8px;background:transparent;
-      border:1px solid rgba(248,113,113,.3);color:var(--err);
-      border-radius:5px;cursor:pointer;font-family:var(--font);font-size:.68rem;
-      transition:all .15s;margin-left:4px;
-    }
-    .px-del-btn:hover{background:rgba(248,113,113,.12)}
-
-    /* Delete message button */
     .msg-delete-btn{display:inline-flex;align-items:center;gap:5px;margin-top:4px;margin-left:6px;padding:4px 10px;border-radius:8px;background:none;border:1px solid transparent;color:transparent;font-family:var(--font);font-size:.7rem;font-weight:600;cursor:pointer;transition:all .2s}
     .msg-body:hover .msg-delete-btn{color:var(--t3);border-color:var(--b1)}
     .msg-delete-btn:hover{background:rgba(248,113,113,.08)!important;color:var(--err)!important;border-color:rgba(248,113,113,.3)!important}
@@ -1136,81 +964,6 @@
       text-align:center;line-height:1.4;
     }
 
-    /* ── PROXY NEW TAB BUTTON ─────────────────────────────────── */
-    .px-new-tab-btn{
-      flex-shrink:0;width:28px;height:28px;border-radius:8px;
-      background:transparent;border:1.5px dashed var(--b2);
-      color:var(--t3);cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
-      transition:all .15s;margin-left:2px;
-    }
-    .px-new-tab-btn:hover{background:var(--hov);border-color:var(--acc);color:var(--acc)}
-    .px-new-tab-btn svg{width:13px;height:13px;pointer-events:none}
-    .px-new-tab-btn:disabled{opacity:.3;cursor:not-allowed}
-    /* ── PROXY ANIMATIONS ─────────────────────────────────────── */
-    @keyframes px-tab-in{from{opacity:0}to{opacity:1}}
-    .px-tab{animation:px-tab-in .18s ease both}
-    #px-frames iframe{animation:none}
-    #px-frames iframe.px-loading{filter:blur(8px) saturate(.6);transition:filter .3s cubic-bezier(.4,0,.2,1)}
-    #px-frames iframe:not(.px-loading){filter:none;transition:filter .25s cubic-bezier(.4,0,.2,1)}
-
-    /* ── PROXY FULLSCREEN ──────────────────────────────────────── */
-    /* Native fullscreen: browser handles the overlay, we just hide the nav bar */
-    #view-proxy:fullscreen,
-    #view-proxy:-webkit-full-screen,
-    #view-proxy:-moz-full-screen {
-      display:flex!important;flex-direction:column;background:var(--bg);
-    }
-    /* Hide nav bar in fullscreen, show only on hover reveal */
-    #view-proxy.px-fs-active #px-nav {
-      position:fixed;top:0;left:0;right:0;z-index:2147483647;
-      transform:translateY(-100%);opacity:0;pointer-events:none;
-      transition:transform .22s cubic-bezier(.4,0,.2,1),opacity .18s ease;
-    }
-    #view-proxy.px-fs-active #px-nav.px-nav-visible {
-      transform:translateY(0);opacity:1;pointer-events:all;
-    }
-    /* Invisible hover zone at top of screen */
-    #px-fs-hover-zone {
-      display:none;position:fixed;top:0;left:0;right:0;height:6px;z-index:2147483646;
-    }
-    #view-proxy.px-fs-active #px-fs-hover-zone { display:block; }
-    #px-load-bar{
-      height:100%;width:0%;background:linear-gradient(90deg,var(--acc),var(--acc2),var(--acc));
-      background-size:200% 100%;
-      box-shadow:0 0 10px var(--acc-glow);
-      transition:width .25s cubic-bezier(.4,0,.2,1),opacity .2s;
-      border-radius:0 2px 2px 0;
-      animation:px-load-shimmer 1.8s linear infinite;
-    }
-    @keyframes px-load-shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
-    .px-tab.active::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:2px;
-      background:linear-gradient(90deg,var(--acc),var(--acc2));
-      border-radius:2px 2px 0 0;
-      animation:px-tab-active-glow 2s ease-in-out infinite;
-    }
-    @keyframes px-tab-active-glow{0%,100%{box-shadow:0 0 8px var(--acc-glow)}50%{box-shadow:0 0 14px var(--acc-glow)}}
-    /* Init steps — smoother transitions */
-    .px-step{transition:color .4s ease,transform .3s ease}
-    .px-step.active{color:var(--t1);transform:translateX(3px)}
-    .px-step.done{color:var(--ok);transform:none}
-    .px-step-icon{transition:all .4s cubic-bezier(.34,1.56,.64,1)}
-    .px-step.done .px-step-icon{transform:scale(1.2);border-color:var(--ok);background:rgba(52,211,153,.1);color:var(--ok)}
-    #px-init-bar{transition:width .6s cubic-bezier(.4,0,.2,1);animation:px-bar-glow 2s ease-in-out infinite}
-    @keyframes px-bar-glow{0%,100%{box-shadow:0 0 6px var(--acc-glow)}50%{box-shadow:0 0 14px var(--acc-glow),0 0 6px var(--acc2)}}
-    /* Tab drag animation */
-    .px-tab.drag-over{background:var(--acc-sub)!important;border-color:var(--acc-ring)!important}
-    /* Nav bar smooth transitions */
-    .px-nav-btn{transition:all .18s cubic-bezier(.4,0,.2,1)}
-    .px-nav-btn:hover{border-color:var(--acc-ring);color:var(--acc);background:var(--acc-sub);transform:scale(1.07)}
-    /* Addr bar glow on focus */
-    #px-addr:focus{
-      border-color:var(--acc);
-      box-shadow:0 0 0 3px var(--acc-sub),0 0 16px var(--acc-glow);
-    }
-
-    /* ── GAMES card-bg fix ───────────────────────────────────── */
     :root,[data-theme="dark"]{--card-bg:var(--elev)}
     [data-theme="light"]{--card-bg:var(--surf)}
 
@@ -1313,7 +1066,40 @@
       opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;
     }
     #tc-toast.show{opacity:1;transform:translateY(0)}
-    /* ── AI VIEW: fix layout ─────────────────────────────────── */
+
+    /* ── ACHIEVEMENTS VIEW ───────────────────────────────────────── */
+    #view-achievements{flex-direction:column;overflow:hidden}
+    #ach-topbar{background:var(--surf);border-bottom:1px solid var(--b0);flex-shrink:0;padding:0 24px}
+    #ach-topbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:900px;margin:0 auto;width:100%}
+    #ach-title-wrap{display:flex;align-items:center;gap:10px;font-size:1.1rem;font-weight:800;color:var(--t1);letter-spacing:-.3px}
+    #ach-progress-wrap{display:flex;align-items:center;gap:10px}
+    #ach-progress-bar-track{width:160px;height:6px;background:var(--b0);border-radius:9px;overflow:hidden}
+    #ach-progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:9px;transition:width .5s ease;box-shadow:0 0 8px var(--acc-glow)}
+    #ach-progress-label{font-size:.78rem;font-weight:700;color:var(--t2);white-space:nowrap}
+    #ach-body{flex:1;overflow-y:auto;padding:28px 24px;max-width:900px;margin:0 auto;width:100%;box-sizing:border-box}
+    .ach-section-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:14px;margin-top:24px}
+    .ach-section-label:first-child{margin-top:0}
+    .ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-bottom:8px}
+    .ach-card{background:var(--surf);border:1px solid var(--b1);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px;transition:all .2s;animation:fadein .25s ease backwards}
+    .ach-card.unlocked{border-color:var(--acc-ring);background:var(--acc-sub);box-shadow:0 0 12px var(--acc-glow)}
+    .ach-card.locked{opacity:.45}
+    .ach-card-icon{width:36px;height:36px;border-radius:10px;background:var(--elev);border:1px solid var(--b1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .ach-card.unlocked .ach-card-icon{background:var(--acc-sub);border-color:var(--acc-ring)}
+    .ach-card-icon svg{width:17px;height:17px;color:var(--t3)}
+    .ach-card.unlocked .ach-card-icon svg{color:var(--acc)}
+    .ach-card-name{font-size:.88rem;font-weight:700;color:var(--t1)}
+    .ach-card.unlocked .ach-card-name{color:var(--acc)}
+    .ach-card-desc{font-size:.74rem;color:var(--t3);line-height:1.5}
+    .ach-card-date{font-size:.65rem;color:var(--t3);opacity:.7}
+    #ach-toast{position:fixed;top:20px;right:24px;z-index:9999;background:var(--surf);border:1px solid var(--acc-ring);border-radius:14px;padding:14px 18px;box-shadow:0 0 28px var(--acc-glow),0 4px 24px rgba(0,0,0,.5);backdrop-filter:blur(16px);display:flex;align-items:center;gap:14px;min-width:260px;max-width:340px;opacity:0;transform:translateX(calc(100% + 40px));transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s;pointer-events:none;font-family:var(--font)}
+    #ach-toast.ach-show{opacity:1;transform:translateX(0);pointer-events:all}
+    #ach-toast.ach-hide{opacity:0;transform:translateX(calc(100% + 40px));transition:transform .2s,opacity .18s}
+    #ach-toast-icon{width:36px;height:36px;border-radius:10px;background:var(--acc-sub);border:1px solid var(--acc-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    #ach-toast-icon svg{width:17px;height:17px;color:var(--acc)}
+    #ach-toast-body{flex:1;min-width:0}
+    #ach-toast-name{font-size:.9rem;font-weight:700;color:var(--acc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    #ach-toast-desc{font-size:.74rem;color:var(--t2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
     #view-ai #shell{
       width:100%;height:100%;overflow:hidden;
       display:flex;flex-direction:row;flex:1;
@@ -1431,6 +1217,9 @@
     .gc-heart-btn:hover{transform:scale(1.12)}
     .gc-heart-btn svg{width:14px;height:14px;fill:transparent;stroke:white;stroke-width:2;transition:fill .14s,stroke .14s}
     .gc-heart-btn.active svg{fill:#ff4b2b;stroke:#ff4b2b}
+    .gc-newtab-btn{position:absolute;bottom:9px;right:9px;width:30px;height:30px;border-radius:8px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.18);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;z-index:6}
+    .gc-newtab-btn:hover{background:var(--acc);border-color:var(--acc);transform:scale(1.1)}
+    .gc-newtab-btn svg{width:13px;height:13px;pointer-events:none}
 
     /* ── GAME PLAYER ─────────────────────────────────────────── */
     #game-view{display:none;position:fixed;inset:0;z-index:500;background:var(--bg);flex-direction:column}
@@ -1536,10 +1325,48 @@
       #gyro-nav{display:none}
       /* Show mobile bottom nav */
       #mobile-nav{display:flex!important}
-      /* Views take full width */
-      #gyro-views{width:100%;height:100dvh}
-      /* Give all views bottom padding for nav bar (except AI which manages its own) */
+      /* Mobile nav now has 6 items — shrink labels slightly */
+      .mbn-btn{font-size:.52rem;min-width:44px;padding:4px 6px}
+
+      /* Views container fills everything ABOVE the nav bar */
+      #gyro-views{width:100%;height:calc(100dvh - 60px)!important;position:relative;overflow:hidden;top:0}
+      /* All views fill the container */
+      .gyro-view{position:absolute;top:0;left:0;right:0;bottom:0;height:100%}
+      /* Non-AI views get bottom padding so content isn't behind the nav */
       .gyro-view:not(#view-ai){padding-bottom:60px;box-sizing:border-box}
+
+      /* ── AI VIEW — only override layout when it IS active ───── */
+      #view-ai.active{
+        flex-direction:column;
+        padding-bottom:0!important;
+      }
+      #view-ai #shell{
+        flex:1;
+        min-height:0;
+        height:100%!important;
+        display:flex!important;
+        flex-direction:row!important;
+        overflow:hidden;
+        width:100%;
+      }
+      #view-ai #sidebar{display:none!important}
+      #view-ai #sidebar.mobile-open{
+        display:flex!important;position:fixed;
+        inset:0 auto 60px 0;width:75%;max-width:280px;
+        z-index:300;height:calc(100dvh - 60px)
+      }
+      #view-ai #main{
+        flex:1;min-height:0;height:100%!important;
+        display:flex!important;flex-direction:column!important;
+        overflow:hidden;background:var(--bg);
+      }
+      #view-ai #topbar{padding:0 12px;height:52px;flex-shrink:0}
+      #view-ai #chat{flex:1;overflow-y:auto;min-height:0;background:var(--bg)}
+      #view-ai #inputbar{flex-shrink:0;padding:8px 12px 12px;background:var(--surf)}
+      #menuBtn{display:flex}
+      .input-hint{display:none}
+      .chat-inner{padding:0 12px}
+
       /* Home */
       .home-hero{padding:24px 16px 12px;height:auto;min-height:calc(100dvh - 60px)}
       .home-cards{grid-template-columns:1fr 1fr;gap:8px}
@@ -1555,20 +1382,7 @@
       .home-card-sub{font-size:.66rem}
       .home-status-hud{display:none}
       .home-settings-corner{display:none}
-      /* AI view - fix 100dvh overflow behind mobile nav */
-      #gyro-views{height:calc(100dvh - 60px)!important;top:0;overflow:hidden}
-      .gyro-view{bottom:0;top:0;left:0;right:0;height:100%}
-      #view-ai{padding-bottom:0;flex-direction:column;background:var(--bg)}
-      #view-ai #shell{height:100%!important;width:100%;overflow:hidden;display:flex;flex-direction:column;flex:1;min-height:0}
-      #view-ai #sidebar{display:none}
-      #view-ai #sidebar.mobile-open{display:flex!important;position:fixed;inset:0 auto 60px 0;width:75%;max-width:280px;z-index:300;height:calc(100dvh - 60px)}
-      #view-ai #main{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;background:var(--bg)}
-      #view-ai #chat{flex:1;overflow-y:auto;min-height:0;background:var(--bg)}
-      #view-ai #inputbar{flex-shrink:0;padding:8px 12px 12px;background:var(--surf)}
-      .chat-inner{padding:0 12px}
-      #topbar{padding:0 12px;height:52px}
-      #menuBtn{display:flex}
-      .input-hint{display:none}
+
       /* Games */
       #gg-sidebar{display:none}
       #gg-content{padding:12px 10px}
@@ -1579,12 +1393,14 @@
       .fb-featured-img{display:none}
       .fb-title{font-size:1.2rem}
       .fb-sub{font-size:.75rem}
+
       /* TextCraft */
       #tc-sidebar{display:none}
       #tc-content{padding:12px 10px 24px}
       #tc-topbar{padding:0 12px;height:52px}
       #tc-grid{grid-template-columns:1fr 1fr}
-      /* Settings modal — full-height bottom sheet */
+
+      /* ── SETTINGS MODAL — bottom sheet with desktop layout ─── */
       #modal-overlay{align-items:flex-end}
       #modal{
         width:100%;max-width:100%;border-radius:22px 22px 0 0;
@@ -1593,91 +1409,66 @@
         animation:modal-sheet-in .28s cubic-bezier(.22,1,.36,1);
       }
       @keyframes modal-sheet-in{from{transform:translateY(100%)}to{transform:translateY(0)}}
-      /* Sheet drag handle */
       #modal::before{
         content:'';display:block;width:40px;height:4px;border-radius:99px;
         background:var(--b2);margin:10px auto 0;flex-shrink:0;
       }
-      .modal-mobile-header{display:flex}
-      .modal-layout{flex:1;flex-direction:column;overflow:hidden;min-height:0}
-      /* Mobile sidebar: pill-style icon+label grid instead of ugly tab bar */
+      .modal-mobile-header{display:none}
+      .modal-layout{flex:1;flex-direction:row;overflow:hidden;min-height:0}
       .modal-sidebar{
-        width:100%;min-width:0;
-        display:grid!important;
-        grid-template-columns:repeat(4,1fr);
-        gap:6px;
-        border-right:none;border-bottom:1px solid var(--b0);
-        padding:8px 12px 10px;
-        height:auto;flex-shrink:0;
-        background:var(--surf);
-        overflow:visible;
-      }
-      .modal-sidebar-header{display:none}
-      .modal-nav-sep{display:none}
-      .modal-nav-group-label{display:none}
-      .modal-nav-item{
-        flex-shrink:0;
+        width:150px;min-width:150px;
+        display:flex!important;
         flex-direction:column;
-        gap:4px;
-        padding:8px 4px 6px;
-        font-size:.62rem;
-        border-radius:12px;
+        overflow-y:auto;overflow-x:hidden;
+        border-right:1px solid var(--b0);
+        border-bottom:none;
+        padding:10px 6px;
+        height:auto;flex-shrink:0;
+      }
+      .modal-sidebar-header{display:flex}
+      .modal-nav-sep{display:block}
+      .modal-nav-group-label{display:block}
+      .modal-nav-item{
+        flex-direction:row;
+        gap:8px;
+        padding:8px 10px;
+        font-size:.82rem;
+        border-radius:10px;
         align-items:center;
-        white-space:nowrap;
-        border:1.5px solid transparent!important;
-        min-width:0;
-        text-align:center;
-        justify-content:center;
+        border:1px solid transparent!important;
+        text-align:left;
+        justify-content:flex-start;
+        font-weight:600;
+        background:none;
+        color:var(--t2);
+        width:100%;
       }
-      .modal-nav-item svg{
-        width:18px;height:18px;
-        opacity:.7;
-        flex-shrink:0;
-      }
+      .modal-nav-item svg{width:14px;height:14px;opacity:.7;flex-shrink:0}
       .modal-nav-item.active{
         background:var(--acc-sub)!important;
         border-color:var(--acc-ring)!important;
         color:var(--acc)!important;
-        font-weight:700;
       }
       .modal-nav-item.active svg{opacity:1}
-      .modal-content{padding:18px 16px 10px;flex:1;overflow-y:auto;gap:18px}
+      .modal-content{padding:20px 16px 12px;flex:1;overflow-y:auto;gap:18px}
       .toggle-row{padding:13px 14px;border-radius:12px}
       .preset-grid{grid-template-columns:repeat(2,1fr)}
       .style-option-grid{grid-template-columns:repeat(2,1fr)}
       .favicon-grid{grid-template-columns:repeat(4,1fr)}
       .modal-footer{padding:12px 16px 24px;gap:8px}
       .btn-cancel,.btn-apply{flex:1;text-align:center;padding:11px 20px}
-      /* Kill backdrop-filter on all overlays — causes blue tint on dark mobile themes */
       #modal-overlay,#model-picker-overlay,#gyro-confirm-overlay{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-      /* Settings nav: 3-col grid, last orphan centered */
-      .modal-sidebar{
-        grid-template-columns:repeat(3,1fr)!important;
-      }
-      /* Center the 7th item (last row has 1 item in 3-col grid) */
-      .modal-nav-item:last-child:nth-child(3n+1){
-        grid-column:2;
-      }
-      /* Code panel on mobile — override 900px rule for true mobile */
       #code-panel.open{
-        height:72dvh!important;
-        bottom:60px!important;
-        border-radius:20px 20px 0 0!important;
+        height:72dvh!important;bottom:60px!important;border-radius:20px 20px 0 0!important;
       }
-      /* Color swatches larger on mobile */
       .color-swatch{width:40px;height:40px}
-      /* Onboarding */
       .ob-card{padding:22px 18px}
       .gwb-card{padding:24px 18px}
-      /* Phrase settings */
       .tw-add-row{flex-direction:column}
       .tw-add-btn{width:100%;justify-content:center;padding:10px}
-      /* Toast position above mobile nav */
       #toast-wrap{bottom:72px}
-      /* Model picker full-width on mobile */
       #model-picker-sheet{border-radius:22px 22px 0 0;max-width:100%}
       .model-picker-list{max-height:55dvh}
-      /* Input bar on mobile - slightly less padding */
       .input-wrap{gap:6px}
       #model-selector-btn{width:36px}
       #sendBtn{width:40px;height:44px}
@@ -1809,7 +1600,7 @@
     <span class="gnav-label">Home</span>
   </button>
   <!-- AI -->
-  <button class="gnav-btn" id="gnav-ai" data-tip="Gyro AI" onclick="switchView('ai')">
+  <button class="gnav-btn" id="gnav-ai" data-tip="AI" onclick="switchView('ai')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     <span class="gnav-label">AI</span>
   </button>
@@ -1823,13 +1614,14 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
     <span class="gnav-label">TextCraft</span>
   </button>
-  <button class="gnav-btn" id="gnav-proxy" data-tip="Gyro Proxy" onclick="switchView('proxy')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-    <span class="gnav-label">Proxy</span>
-  </button>
 
   <div class="gnav-spacer"></div>
   <div id="gyro-nav-bottom">
+    <!-- Achievements -->
+    <button class="gnav-btn" id="gnav-achievements" data-tip="Achievements" onclick="switchView('achievements')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 2h12v7a6 6 0 0 1-12 0V2z"/><path d="M9 18v3"/><path d="M15 18v3"/><path d="M7 21h10"/></svg>
+      <span class="gnav-label">Achievements</span>
+    </button>
     <!-- Download -->
     <button class="gnav-btn" id="gnav-download" data-tip="Download Gyro" onclick="downloadGyro()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -1971,7 +1763,7 @@
           <input type="file" id="fileInput" accept=".txt,.md,.csv,.json,.js,.ts,.py,.html,.css,.xml,.yaml,.yml,.pdf,image/*" multiple style="display:none"/>
         </div>
         <!-- Think mode removed -->
-        <textarea id="prompt" placeholder="Message Gyro AI…" rows="1"></textarea>
+        <textarea id="prompt" placeholder="Message AI…" rows="1"></textarea>
         <!-- Model selector -->
         <button id="model-selector-btn" title="Select AI model">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v4c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 9v4c0 1.66 4.03 3 9 3s9-1.34 9-3V9"/><path d="M3 13v4c0 1.66 4.03 3 9 3s9-1.34 9-3v-4"/></svg>
@@ -2195,25 +1987,25 @@
 
 </div><!-- /view-textcraft -->
 
-<div class="gyro-view" id="view-proxy" style="flex-direction:column;overflow:hidden;padding:0!important">
-
-  <!-- FILE:// ERROR -->
-  <div id="px-file-error" style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:40px;text-align:center;flex:1">
-    <div style="width:56px;height:56px;border-radius:16px;background:var(--acc-sub);border:1px solid var(--acc-ring);display:flex;align-items:center;justify-content:center;color:var(--acc)">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-    </div>
-    <div style="font-size:1.15rem;font-weight:800;color:var(--t1);letter-spacing:-.3px">Not usable on files</div>
-    <div style="font-size:.88rem;color:var(--t2);max-width:380px;line-height:1.75">
-      The proxy can't run as a local file. Host Gyro on a web server to use this feature.
+<!-- ▸▸ ACHIEVEMENTS VIEW -->
+<div class="gyro-view" id="view-achievements">
+  <div id="ach-topbar">
+    <div id="ach-topbar-inner">
+      <div id="ach-title-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:var(--acc)"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 2h12v7a6 6 0 0 1-12 0V2z"/><path d="M9 18v3"/><path d="M15 18v3"/><path d="M7 21h10"/></svg>
+        <span id="ach-title-text">Achievements</span>
+      </div>
+      <div id="ach-progress-wrap">
+        <div id="ach-progress-bar-track"><div id="ach-progress-bar-fill"></div></div>
+        <span id="ach-progress-label">0 / 0</span>
+      </div>
     </div>
   </div>
-
-  <!-- PROXY APP MOUNT -->
-  <div id="px-mount" style="display:flex;flex-direction:column;flex:1;overflow:hidden;min-height:0"></div>
-
-</div><!-- /view-proxy -->
-
-<!-- ▸▸ MUSIC VIEW -->
+  <div id="ach-body">
+    <div id="ach-grid-unlocked"></div>
+    <div id="ach-grid-locked"></div>
+  </div>
+</div><!-- /view-achievements -->
 
 </div><!-- /gyro-views -->
 
@@ -2237,10 +2029,16 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
     Text
   </button>
-  <button class="mbn-btn" id="mbn-proxy" onclick="switchView('proxy')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-    Proxy
+  <button class="mbn-btn" id="mbn-achievements" onclick="switchView('achievements')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 2h12v7a6 6 0 0 1-12 0V2z"/><path d="M9 18v3"/><path d="M15 18v3"/><path d="M7 21h10"/></svg>
+    Achievements
   </button>
+
+  <button class="mbn-btn" id="mbn-download" onclick="downloadGyro()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download
+  </button>
+
   <button class="mbn-btn" id="mbn-settings" onclick="openSettings()">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
     Settings
@@ -2258,6 +2056,9 @@
     <div id="gv-actions">
       <button class="gv-btn" id="gv-download" title="Download">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+      <button class="gv-btn" id="gv-newtab" title="Open in new tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       </button>
       <button class="gv-btn" id="gv-fullscreen" title="Fullscreen">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
@@ -2344,53 +2145,50 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
-        <div class="modal-nav-group-label">Customize</div>
-        <button class="modal-nav-item active" data-tab="personality">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Personality
-        </button>
-        <button class="modal-nav-item" data-tab="appearance">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.55 0 1-.45 1-1v-1.09c0-.27-.1-.52-.29-.71-.18-.18-.29-.43-.29-.71 0-.55.45-1 1-1h1.5c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z"/><circle cx="6.5" cy="11.5" r="1.5"/><circle cx="9.5" cy="7.5" r="1.5"/><circle cx="14.5" cy="7.5" r="1.5"/><circle cx="17.5" cy="11.5" r="1.5"/></svg>
-          Appearance
-        </button>
-        <div class="modal-nav-group-label" style="margin-top:6px">AI & Data</div>
-        <button class="modal-nav-item" data-tab="chat">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          Chat
+        <div class="modal-nav-group-label">You</div>
+        <button class="modal-nav-item active" data-tab="profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Profile
         </button>
         <button class="modal-nav-item" data-tab="memories">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
           Memories
         </button>
+        <div class="modal-nav-sep"></div>
+        <div class="modal-nav-group-label">AI</div>
+        <button class="modal-nav-item" data-tab="personality">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Personality
+        </button>
+        <button class="modal-nav-item" data-tab="chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Behavior
+        </button>
         <button class="modal-nav-item" data-tab="permissions">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Permissions
         </button>
-        <div class="modal-nav-group-label" style="margin-top:6px">Account</div>
-        <button class="modal-nav-item" data-tab="profile">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          Profile
+        <div class="modal-nav-sep"></div>
+        <div class="modal-nav-group-label">App</div>
+        <button class="modal-nav-item" data-tab="appearance">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+          Appearance
         </button>
         <button class="modal-nav-item" data-tab="general">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
           General
         </button>
-        <div class="modal-nav-sep"></div>
-        <div class="modal-nav-group-label">Tools</div>
-        <button class="modal-nav-item" data-tab="proxy">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          Proxy
-        </button>
-      </div>
+
+      </div><!-- /modal-sidebar -->
 
       <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
         <div class="modal-content">
 
-          <!-- PERSONALITY -->
-          <div class="tab-panel active" id="tab-personality">
+          <!-- PERSONALITY (under AI group) -->
+          <div class="tab-panel" id="tab-personality">
             <div class="modal-section">
-              <div class="modal-section-title">Personality</div>
-              <div class="modal-section-sub">Choose how Gyro responds to you</div>
+              <div class="modal-section-title">AI Personality</div>
+              <div class="modal-section-sub">Choose a style for how the AI talks to you</div>
               <div class="preset-grid">
                 <button class="preset-btn" data-preset="You are Gyro AI, a helpful, friendly, and concise assistant.">Default</button>
                 <button class="preset-btn" data-preset="You are Gyro AI, a professional assistant. Be formal, precise, and thorough.">Professional</button>
@@ -2436,11 +2234,11 @@
             </div>
           </div>
 
-          <!-- CHAT -->
+          <!-- BEHAVIOR (AI group) -->
           <div class="tab-panel" id="tab-chat">
             <div class="modal-section">
-              <div class="modal-section-title">Chat</div>
-              <div class="modal-section-sub">Control how messages are sent and displayed</div>
+              <div class="modal-section-title">AI Behavior</div>
+              <div class="modal-section-sub">Control how the AI responds and what it can access</div>
               <div class="toggle-row">
                 <div><div class="toggle-label">Streaming</div><div class="toggle-sub">See responses typed word by word in real time</div></div>
                 <label class="toggle-switch"><input type="checkbox" id="streamToggle" checked/><span class="toggle-slider"></span></label>
@@ -2477,8 +2275,8 @@
           <!-- PERMISSIONS -->
           <div class="tab-panel" id="tab-permissions">
             <div class="modal-section">
-              <div class="modal-section-title">Permissions</div>
-              <div class="modal-section-sub">Choose what device information Gyro can access when you ask about it</div>
+              <div class="modal-section-title">AI Permissions</div>
+              <div class="modal-section-sub">What device information the AI can access when you ask</div>
               <div class="toggle-row">
                 <div>
                   <div class="toggle-label">Device Time</div>
@@ -2506,10 +2304,10 @@
           </div>
 
           <!-- PROFILE -->
-          <div class="tab-panel" id="tab-profile">
+          <div class="tab-panel active" id="tab-profile">
             <div class="modal-section">
               <div class="modal-section-title">Profile</div>
-              <div class="modal-section-sub">Your name and avatar shown in chat</div>
+              <div class="modal-section-sub">Your name and avatar — the AI will use these to personalize your experience</div>
               <div class="modal-label">Display Name</div>
               <input class="settings-input" id="profileNameInput" type="text" placeholder="Your name…" maxlength="32"/>
             </div>
@@ -2533,7 +2331,7 @@
           <div class="tab-panel" id="tab-general">
             <div class="modal-section">
               <div class="modal-section-title">General</div>
-              <div class="modal-section-sub">Tab title, icon, and data management</div>
+              <div class="modal-section-sub">App title, tab icon, and data management</div>
               <div class="modal-label">Tab / Window Title</div>
               <input class="settings-input" id="tabTitleInput" type="text" placeholder="Gyro" maxlength="60"/>
             </div>
@@ -2612,32 +2410,8 @@
             </div>
           </div>
 
-          <!-- PROXY -->
-          <div class="tab-panel" id="tab-proxy">
-            <div class="modal-section">
-              <div class="modal-section-title">Search Engine</div>
-              <div class="modal-section-sub">Used when you type a search query in Gyro Proxy</div>
-              <div class="px-engine-grid" id="px-engine-grid">
-                <button class="px-engine-pill" data-engine="duckduckgo">
-                  <span class="px-engine-name">DuckDuckGo</span>
-                </button>
-                <button class="px-engine-pill" data-engine="brave">
-                  <span class="px-engine-name">Brave Search</span>
-                </button>
-              </div>
-            </div>
-            <div class="modal-section">
-              <div class="modal-section-title">Proxy Server</div>
-              <div class="modal-section-sub">Lower ping means faster browsing</div>
-              <div id="px-server-list" style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px"></div>
-              <div class="modal-label">Custom Server</div>
-              <div style="display:flex;gap:8px;margin-top:6px">
-                <input id="px-custom-input" type="text" placeholder="wss://your-server.com/wisp/" spellcheck="false"
-                  style="flex:1;height:36px;padding:0 12px;background:var(--elev);border:1px solid var(--b1);border-radius:10px;color:var(--t1);font-family:var(--font);font-size:.84rem;outline:none;transition:border-color .15s">
-                <button id="px-custom-add" style="height:36px;padding:0 16px;background:var(--acc);border:none;border-radius:10px;color:#fff;font-family:var(--font);font-size:.8rem;font-weight:700;cursor:pointer;opacity:1;transition:opacity .15s">Add</button>
-              </div>
-            </div>
-          </div>
+
+
 
         </div>
         <div class="modal-footer">
@@ -2988,12 +2762,7 @@ function applyFont(f){
   if(f==='lato'&&!document.getElementById('font-lato')){const l=document.createElement('link');l.id='font-lato';l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap';document.head.appendChild(l)}
   if(f==='merriweather'&&!document.getElementById('font-merriweather')){const l=document.createElement('link');l.id='font-merriweather';l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap';document.head.appendChild(l)}
   document.querySelectorAll('#fontGrid .style-option-btn').forEach(b=>b.classList.toggle('selected',b.dataset.font===f));
-  if (typeof proxyBooted !== 'undefined' && proxyBooted && typeof pxMakeNtHtml === 'function') {
-    window.__pxNtHtml = pxMakeNtHtml();
-    if (typeof pxTabs !== 'undefined') {
-      pxTabs.forEach(t => { if (!t.frame||!t.frame.frame) return; if (!t.url||t.title==='New Tab'){t.frame.frame.src=freshBlob;t.url='';} });
-    }
-  }
+
 }
 function applyBubble(b){
   currentBubble=b;htmlEl.setAttribute('data-bubble',b);
@@ -3316,7 +3085,7 @@ function showWelcome(){
         <circle cx="18" cy="18" r="17" stroke="url(#lg-w)" stroke-width=".8" fill="none" opacity=".35"/>
       </svg>
     </div>
-    <div class="w-title">${greeting} <span>Gyro AI</span></div>
+    <div class="w-title">${greeting} <span>AI</span></div>
     <div class="w-subtitle">Powered by state-of-the-art AI models</div>
     <div class="w-chips">${chips.map(c=>`<button class="w-chip" data-prompt="${escHtml(c.prompt)}"><span class="w-chip-icon">${c.icon}</span>${escHtml(c.text)}</button>`).join('')}</div>`;
   chatEl.insertBefore(w,chatEl.firstChild);
@@ -3962,7 +3731,7 @@ function renderImageBubble(prompt,container,animate=true,sessionId){
   const avatar=document.createElement('div');avatar.className='msg-avatar';
   avatar.innerHTML=`<svg viewBox="0 0 36 36" fill="none" style="width:16px;height:16px"><ellipse cx="18" cy="18" rx="14" ry="5" stroke="white" stroke-width="1.8" fill="none"/><ellipse cx="18" cy="18" rx="5" ry="14" stroke="white" stroke-width="1.8" fill="none"/><circle cx="18" cy="18" r="3" fill="white"/></svg>`;
   const body=document.createElement('div');body.className='msg-body';
-  const name=document.createElement('div');name.className='msg-name';name.textContent='Gyro AI';
+  const name=document.createElement('div');name.className='msg-name';name.textContent='AI';
   const card=document.createElement('div');card.className='img-gen-card';
   // Use a stable seed based on prompt hash so rebuilds don't regenerate
   const seed=stableHash(prompt);
@@ -4225,7 +3994,7 @@ function buildCodeSummaryCard(data){
   const av=document.createElement('div');av.className='msg-avatar';
   av.innerHTML=`<svg viewBox="0 0 36 36" fill="none" style="width:16px;height:16px"><ellipse cx="18" cy="18" rx="14" ry="5" stroke="white" stroke-width="1.8" fill="none"/><ellipse cx="18" cy="18" rx="5" ry="14" stroke="white" stroke-width="1.8" fill="none"/><circle cx="18" cy="18" r="3" fill="white"/></svg>`;
   const body=document.createElement('div');body.className='msg-body';
-  const name=document.createElement('div');name.className='msg-name';name.textContent='Gyro AI';
+  const name=document.createElement('div');name.className='msg-name';name.textContent='AI';
   const card=document.createElement('div');card.className='code-summary-card';
   const canPrev=(lang==='html'||lang==='svg');
   const ext=EXT_MAP[lang]||'txt';
@@ -4292,7 +4061,7 @@ function renderBubble(role,content,container,animate=true,attachedFileName=null,
   if(isUser){avatar.innerHTML=buildAvatarContent()}
   else{avatar.innerHTML=`<svg viewBox="0 0 36 36" fill="none" style="width:16px;height:16px"><ellipse cx="18" cy="18" rx="14" ry="5" stroke="white" stroke-width="1.8" fill="none"/><ellipse cx="18" cy="18" rx="5" ry="14" stroke="white" stroke-width="1.8" fill="none"/><circle cx="18" cy="18" r="3" fill="white"/></svg>`}
   const body=document.createElement('div');body.className='msg-body';
-  const name=document.createElement('div');name.className='msg-name';name.textContent=isUser?(userName||'You'):'Gyro AI';
+  const name=document.createElement('div');name.className='msg-name';name.textContent=isUser?(userName||'You'):'AI';
   body.appendChild(name);
   if(attachedFileName){
     const fp=document.createElement('div');fp.className='file-attach-preview';
@@ -4609,6 +4378,9 @@ async function sendMessage(){
   if(busySessions.has(activeId))return;
   const text=promptEl.value.trim();
   if(!text&&pendingFiles.length===0)return;
+
+  // Track prompt count for achievements
+  if (text && window.__gyroAch) window.__gyroAch.promptSent();
 
   // FIX: ensure we have an active session
   if(!activeId){newSession()}
@@ -5358,7 +5130,7 @@ async function streamBubble(fullText,container,sessionId){
   const avatar=document.createElement('div');avatar.className='msg-avatar';
   avatar.innerHTML=`<svg viewBox="0 0 36 36" fill="none" style="width:16px;height:16px"><ellipse cx="18" cy="18" rx="14" ry="5" stroke="white" stroke-width="1.8" fill="none"/><ellipse cx="18" cy="18" rx="5" ry="14" stroke="white" stroke-width="1.8" fill="none"/><circle cx="18" cy="18" r="3" fill="white"/></svg>`;
   const body=document.createElement('div');body.className='msg-body';
-  const name=document.createElement('div');name.className='msg-name';name.textContent='Gyro AI';
+  const name=document.createElement('div');name.className='msg-name';name.textContent='AI';
   const bubble=document.createElement('div');bubble.className='msg-bubble stream-cursor';
   body.appendChild(name);body.appendChild(bubble);wrap.appendChild(avatar);wrap.appendChild(body);container.appendChild(wrap);
   const words=fullText.split(' ');let built='';
@@ -5550,11 +5322,7 @@ function openSettings(){
   document.getElementById('permTimeToggle').checked=permTime;
   document.getElementById('permBatteryToggle').checked=permBattery;
   document.getElementById('permDeviceToggle').checked=permDevice;
-  // Proxy tab — only render if proxy UI exists
-  if (typeof pxRenderEngines === 'function' && document.getElementById('px-engine-grid')) pxRenderEngines();
-  if (typeof pxRenderServers === 'function' && document.getElementById('px-server-list')) pxRenderServers();
-  const _pcaBtn = document.getElementById('px-custom-add');
-  if (_pcaBtn && typeof pxAddCustomWisp === 'function') _pcaBtn.onclick = pxAddCustomWisp;
+
   updateProfilePreview();applyColor(currentColor);applyFont(currentFont);applyFavicon(faviconChoice,faviconCustomUrl);
   renderCustomFaviconGrid();
   renderTypewriterPhraseList();
@@ -5564,15 +5332,40 @@ function openSettings(){
 function closeSettings(){overlay.classList.remove('open')}
 const _settingsBtn=document.getElementById('settingsBtn');if(_settingsBtn)_settingsBtn.onclick=()=>{openSettings();closeMobileSidebar()};
 
-// Global download — called from nav rail
-function downloadGyro(){
-  const src=document.documentElement.outerHTML;
-  const blob=new Blob(['<!DOCTYPE html>\n'+src],{type:'text/html'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;a.download='gyro.html';a.click();
-  setTimeout(()=>URL.revokeObjectURL(url),2000);
-  toast('Downloading Gyro…',1800);
+// Hide download button when opened as a local file (already have the file)
+(function(){
+  if(window.location.protocol==='file:'){
+    var els=['gnav-download','mbn-download'];
+    els.forEach(function(id){
+      var el=document.getElementById(id);
+      if(el)el.style.display='none';
+    });
+  }
+})();
+async function downloadGyro(){
+  const RAW='https://raw.githubusercontent.com/blockblitz-tech/gyro/main/index.html';
+  toast('Fetching latest Gyro…',2200);
+  try{
+    const res=await fetch(RAW);
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const html=await res.text();
+    const blob=new Blob([html],{type:'text/html'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download='gyro.html';a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),3000);
+    toast('Downloaded latest Gyro ✓',1800);
+  }catch(err){
+    // Fallback: download current page if fetch fails
+    console.warn('Remote fetch failed, using local copy:',err);
+    const src=document.documentElement.outerHTML;
+    const blob=new Blob(['<!DOCTYPE html>\n'+src],{type:'text/html'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download='gyro.html';a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),2000);
+    toast('Downloaded Gyro (offline copy)',1800);
+  }
 }
 document.getElementById('modalClose').onclick=closeSettings;
 document.getElementById('modalCloseMobile').onclick=closeSettings;
@@ -5672,6 +5465,10 @@ document.getElementById('clearAllDataBtn').onclick=async()=>{
   streamingEnabled=true;promptEnhanceEnabled=true;memoriesEnabled=true;
   faviconChoice='style-rings';faviconCustomUrl='';customFavicons=[];
   permTime=true;permBattery=true;permDevice=true;
+  // Clear achievements + all related tracking keys
+  ['gyro_achievements_v1','gyro_visit_count','gyro_last_visit_ts','gyro_total_prompts',
+   'gyro_games_time_ms','gyro_sections_visited'].forEach(function(k){localStorage.removeItem(k);});
+  if (window.__gyroAch) window.__gyroAch.reset();
   applyTheme('dark');applyColor('default');applyFont('google-sans');applyFavicon('style-rings','');applyTabTitle('Gyro');
   closeSettings();
   // Show onboarding again
@@ -5684,9 +5481,10 @@ document.getElementById('clearAllDataBtn').onclick=async()=>{
 document.getElementById('modalApply').onclick=async()=>{
   const sel=document.querySelector('.preset-btn.selected');
   currentSystemPrompt=sel?sel.dataset.preset:SYSTEM_PROMPT_BASE;
+  // Set userName FIRST so buildSystemPrompt() picks it up
+  userName=document.getElementById('profileNameInput').value.trim();
   if(activeId){const s=activeSession();if(s)s.history[0]={role:'system',content:buildSystemPrompt()}}
   const _sb=document.getElementById('settingsBtn');if(_sb)_sb.classList.remove('personality-active');
-  userName=document.getElementById('profileNameInput').value.trim();
   applyTabTitle(document.getElementById('tabTitleInput').value.trim()||'Gyro AI');
   await savePermissions();
   closeSettings();await persistSave();toast('Settings saved.');
@@ -5772,7 +5570,7 @@ obNameInput.addEventListener('keydown',e=>{if(e.key==='Enter')finishOnboarding()
 // ── View switcher ────────────────────────────────────────────
 let currentView = 'home';
 let gamesBooted  = false;
-let proxyBooted  = false;
+
 
 function toggleNavRail() {
   const nav = document.getElementById('gyro-nav');
@@ -5794,10 +5592,11 @@ async function switchView(view) {
   currentView = view;
   closeMobileSidebar();
   document.querySelectorAll('.gyro-view').forEach(v => v.classList.toggle('active', v.id === 'view-' + view));
-  ['home','ai','games','textcraft','proxy'].forEach(id => {
+  ['home','ai','games','textcraft','achievements'].forEach(id => {
     const b=document.getElementById('gnav-'+id); if(b)b.classList.toggle('active',id===view);
   });
-  ['home','ai','games','textcraft','proxy'].forEach(id => {
+  const bach = document.getElementById('gnav-achievements'); if(bach) bach.classList.toggle('active', view==='achievements');
+  ['home','ai','games','textcraft','achievements'].forEach(id => {
     const b=document.getElementById('mbn-'+id); if(b)b.classList.toggle('active',id===view);
   });
   if (view === 'ai') {
@@ -5818,7 +5617,7 @@ async function switchView(view) {
     }
   }
   if (view === 'textcraft' && !tcBooted) { tcBooted = true; initTextCraft(); }
-  if (view === 'proxy' && !proxyBooted) { proxyBooted = true; proxyInit(); }
+
   syncGGThemeIcon();
   syncTCThemeIcon();
 }
@@ -6115,7 +5914,12 @@ function ggCardHTML(game, i) {
       <div class="gc-thumb">
         <img class="gc-thumb-img" src="${cover}" alt="${game.name}" loading="lazy"
           onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1 1%22%3E%3Crect fill=%22%23222%22 width=%221%22 height=%221%22/%3E%3C/svg%3E'">
-        <div class="gc-overlay"><div class="gc-play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+        <div class="gc-overlay">
+          <div class="gc-play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <button class="gc-newtab-btn" onclick="event.stopPropagation();ggOpenInNewTab(ggZones.find(g=>g.id===${game.id}))" title="Open in new tab">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </button>
+        </div>
       </div>
       <button class="gc-heart-btn ${isFav ? 'active' : ''}" onclick="event.stopPropagation();ggToggleFav(${game.id})" title="${isFav ? 'Remove favorite' : 'Add favorite'}">
         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -6253,7 +6057,25 @@ async function ggDownloadGame() {
   } catch(e) { ggToast('Download failed'); }
 }
 
-// ── Toast ────────────────────────────────────────────────────
+async function ggOpenInNewTab(game) {
+  if (!game) return;
+  ggToast('Opening in new tab…', 1800);
+  try {
+    const url = ggGameUrl(game) || (GG_HTML_URL + '/' + game.id + '.html');
+    const resp = await fetch(url + '?t=' + Date.now());
+    let html = await resp.text();
+    html = ggCleanHTML(html);
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const blobUrl = URL.createObjectURL(blob);
+    const win = window.open('about:blank', '_blank');
+    if (!win) { ggToast('Pop-up blocked — allow pop-ups and try again', 3000); URL.revokeObjectURL(blobUrl); return; }
+    win.location.href = blobUrl;
+    // Revoke after the new tab has had time to load
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+  } catch(e) { ggToast('Failed to open game'); }
+}
+
+
 function ggToast(msg, dur=2200) {
   const el = document.getElementById('gg-toast');
   if (!el) return;
@@ -6330,6 +6152,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Game player controls
   const gvBack = document.getElementById('gv-back');
   if (gvBack) gvBack.addEventListener('click', ggCloseGame);
+
+  const gvNewTab = document.getElementById('gv-newtab');
+  if (gvNewTab) gvNewTab.addEventListener('click', () => ggOpenInNewTab(ggCurrentGame));
 
   const gvFull = document.getElementById('gv-fullscreen');
   if (gvFull) gvFull.addEventListener('click', () => {
@@ -7229,760 +7054,325 @@ function typeScrollWords() {
   container.style.transform = `translateY(-${scrollY}px)`;
 }
 
-/* ================================================================
-   GYRO PROXY — GhostLink engine, Gyro UI
-================================================================ */
 
-// ── Lazy-load Scramjet + BareMux ─────────────────────────────
-let _pxScriptsLoaded = false;
-function pxLoadScripts() {
-  if (_pxScriptsLoaded) return Promise.resolve();
-  return new Promise((res, rej) => {
-    const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/gh/Destroyed12121/Staticsj@main/JS/scramjet.all.js';
-    s.onload = () => {
-      import('https://cdn.jsdelivr.net/npm/@mercuryworkshop/bare-mux/dist/index.mjs')
-        .then(m => { window.BareMux = m; _pxScriptsLoaded = true; res(); })
-        .catch(rej);
-    };
-    s.onerror = () => rej(new Error('Failed to load Scramjet. Check your internet.'));
-    document.head.appendChild(s);
-  });
-}
-
-// ── Wisp servers — fetched from GhostLink's live list ────────
-let PX_WISP_SERVERS = [];
-let PX_DEFAULT_WISP = null;
-
-async function pxFetchWispServers() {
-  try {
-    const res = await fetch('https://cdn.jsdelivr.net/gh/virtuan4-max/ghostlinkhub@main/proxy/wisps.html');
-    const text = await res.text();
-    const match = text.match(/const\s+WISP_SERVERS\s*=\s*(\[[\s\S]*?\]);/);
-    if (match) PX_WISP_SERVERS = (new Function('return ' + match[1]))();
-  } catch(e) { console.warn('[Gyro Proxy] Could not fetch wisp list:', e); }
-  if (!PX_WISP_SERVERS.length) {
-    PX_WISP_SERVERS = [
-      { name: 'Hydrovolter', url: 'wss://admin.proxy.hydrovolter.com/scramjet/wisp/' },
-      { name: 'i-ready',     url: 'wss://i-ready.math.bostoncareercounselor.com/wisp/' },
-    ];
-  }
-  PX_DEFAULT_WISP = PX_WISP_SERVERS[0].url;
-}
-
-// ── State ─────────────────────────────────────────────────────
-let pxScramjet = null, pxConnReady = false;
-let pxTabs = [], pxActiveId = null, pxNextId = 1, pxDragSrc = null;
-let pxSearchEngine = 'duckduckgo';
-
-const PX_SEARCH_ENGINES = {
-  duckduckgo: q => 'https://duckduckgo.com/?q=' + encodeURIComponent(q),
-  brave:      q => 'https://search.brave.com/search?q=' + encodeURIComponent(q),
-  google:     q => 'https://www.google.com/search?q=' + encodeURIComponent(q),
-  bing:       q => 'https://www.bing.com/search?q=' + encodeURIComponent(q),
-};
-
-const pxGetBasePath = () => { const p = location.pathname.replace(/[^/]*$/, ''); return p.endsWith('/') ? p : p + '/'; };
-const pxGetCustomWisps = () => { try { return window.__pxCustomWisps || []; } catch { return []; } };
-const pxAllServers = () => [...PX_WISP_SERVERS, ...pxGetCustomWisps()];
-const pxGetActive  = () => pxTabs.find(t => t.id === pxActiveId);
-const pxCanAddTab  = () => pxTabs.length < 12;
-
-// ── Ping ─────────────────────────────────────────────────────
-async function pxPing(url, timeout = 2500) {
-  return new Promise(resolve => {
-    const t0 = Date.now();
-    try {
-      const ws = new WebSocket(url);
-      const timer = setTimeout(() => { try{ws.close();}catch{} resolve({url,ok:false,ms:null}); }, timeout);
-      ws.onopen  = () => { clearTimeout(timer); try{ws.close();}catch{} resolve({url,ok:true,ms:Date.now()-t0}); };
-      ws.onerror = () => { clearTimeout(timer); resolve({url,ok:false,ms:null}); };
-    } catch { resolve({url,ok:false,ms:null}); }
-  });
-}
-
-async function pxPickBestServer() {
-  const cur = window.__pxWispCache || PX_DEFAULT_WISP;
-  if (await pxPing(cur, 2500).then(r=>r.ok)) return; // current is fine
-  const results = await Promise.all(pxAllServers().map(s => pxPing(s.url, 3000)));
-  const best = results.filter(r=>r.ok).sort((a,b)=>a.ms-b.ms)[0];
-  if (!best) throw new Error('All proxy servers are offline. Add a custom wisp server.');
-  window.__pxWispCache = best.url;
-  DB.setMisc('gyro_px_wisp', best.url).catch(()=>{});
-}
-
-// ── Scramjet + BareMux init ──────────────────────────────────
-async function pxInitScramjet() {
-  if (pxScramjet) return pxScramjet;
-  if (typeof $scramjetLoadController === 'undefined') throw new Error('Scramjet script not loaded. Check your internet connection.');
-  const { ScramjetController } = $scramjetLoadController();
-  const CDN = 'https://cdn.jsdelivr.net/gh/Destroyed12121/Staticsj@main/JS/';
-  pxScramjet = new ScramjetController({
-    prefix: pxGetBasePath() + 'scramjet/',
-    files: {
-      wasm: CDN + 'scramjet.wasm.wasm',
-      all:  CDN + 'scramjet.all.js',
-      sync: CDN + 'scramjet.sync.js',
-    }
-  });
-  try { await pxScramjet.init(); }
-  catch(err) {
-    if (/IDBDatabase|object stores|VersionError/.test(err.message)) {
-      console.warn('[Gyro] Scramjet DB error, clearing and retrying:', err.message);
-      for (const d of ['scramjet-data','scrambase','ScramjetData','sj-cache']) {
-        try { indexedDB.deleteDatabase(d); } catch {}
-      }
-      pxScramjet = null;
-      await new Promise(r => setTimeout(r, 300));
-      return pxInitScramjet();
-    }
-    throw err;
-  }
-  return pxScramjet;
-}
-
-async function pxInitConn() {
-  if (pxConnReady) return;
-  const BM = window.BareMux;
-  if (!BM) throw new Error('BareMux not loaded.');
-  const wisp = window.__pxWispCache || PX_DEFAULT_WISP;
-  const conn = new BM.BareMuxConnection(pxGetBasePath() + 'bareworker.js');
-  await Promise.race([
-    conn.setTransport('https://cdn.jsdelivr.net/npm/@mercuryworkshop/epoxy-transport@2.1.28/dist/index.mjs', [{wisp}]),
-    new Promise((_,rej) => setTimeout(()=>rej(new Error('Connection timed out — server may be offline.')), 8000))
-  ]);
-  pxConnReady = true;
-}
-
-// ── New-tab page ─────────────────────────────────────────────
-const PX_NT_DEFAULT_SHORTCUTS = [
-  { label:'YouTube',   url:'https://www.youtube.com'  },
-  { label:'TikTok',    url:'https://www.tiktok.com'   },
-  { label:'now.gg',    url:'https://now.gg'            },
-  { label:'Reddit',    url:'https://www.reddit.com'   },
-  { label:'Discord',   url:'https://discord.com'      },
-  { label:'Instagram', url:'https://instagram.com'    },
-];
-
-function pxGetShortcuts() { return window.__pxShortcutsCache || PX_NT_DEFAULT_SHORTCUTS; }
-function pxSaveShortcuts(arr) {
-  window.__pxShortcutsCache = arr;
-  DB.setMisc('gyro_px_shortcuts', JSON.stringify(arr)).catch(()=>{});
-}
-
-function pxMakeNtHtml() {
-  const eng = pxSearchEngine || 'duckduckgo';
-  const engLabel = {duckduckgo:'DuckDuckGo',brave:'Brave Search',google:'Google',bing:'Bing'}[eng] || 'DuckDuckGo';
-  const fontKey = window.__pxFontCache || 'google-sans';
-  const FONT_MAP = {
-    'google-sans': { family:"'Google Sans','Product Sans',system-ui,sans-serif", gfUrl:"https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600;700;800&display=swap" },
-    'inter':       { family:"'Inter',system-ui,sans-serif", gfUrl:"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" },
-    'roboto':      { family:"'Roboto',system-ui,sans-serif", gfUrl:"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" },
-    'lato':        { family:"'Lato',system-ui,sans-serif", gfUrl:"https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" },
-    'mono':        { family:"'DM Mono',monospace", gfUrl:"https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" },
-  };
-  const font = FONT_MAP[fontKey] || FONT_MAP['google-sans'];
-  const shortcuts = pxGetShortcuts();
-  const scHtml = shortcuts.map(sc => {
-    const host = (() => { try { return new URL(sc.url).hostname; } catch { return sc.url.replace(/^https?:\/\//,'').split('/')[0]; } })();
-    return `<div class="sc" onclick="navTo('${sc.url.replace(/'/g,"\\'")}')">
-      <div class="sc-icon"><img src="https://www.google.com/s2/favicons?domain=${host}&sz=64" onerror="this.style.opacity='.2'" alt=""/></div>
-      <span class="sc-label">${sc.label.replace(/</g,'&lt;')}</span>
-    </div>`;
-  }).join('');
-
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>New Tab</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="${font.gfUrl}" rel="stylesheet"/>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--acc:#4f9cf9;--acc2:#6dd5b0;--bg:#0d0f14;--t1:#e8ecf4;--t2:#9ba3bb;--t3:#5c6480;--b1:rgba(255,255,255,.10)}
-html,body{height:100%;background:var(--bg)}
-body{display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:${font.family};
-  background-image:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(79,156,249,.13),transparent),radial-gradient(ellipse 50% 50% at 90% 90%,rgba(109,213,176,.07),transparent);}
-@keyframes fade-up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@keyframes ring-o{to{transform:rotate(360deg)}}
-@keyframes ring-m{to{transform:rotate(-360deg)}}
-.logo-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:28px;opacity:0;animation:fade-up .4s .04s cubic-bezier(.22,1,.36,1) forwards}
-.logo-svg{animation:float 4.5s ease-in-out infinite}
-.ring-o{transform-origin:26px 26px;animation:ring-o 9s linear infinite}
-.ring-m{transform-origin:26px 26px;animation:ring-m 6s linear infinite}
-.ring-i{transform-origin:26px 26px;animation:ring-o 20s linear infinite}
-.logo-text{font-size:1.4rem;font-weight:800;letter-spacing:-.4px;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.logo-sub{font-size:.58rem;color:var(--t3);letter-spacing:.14em;text-transform:uppercase}
-.search-wrap{width:100%;max-width:500px;padding:0 20px;margin-bottom:24px;opacity:0;animation:fade-up .4s .11s cubic-bezier(.22,1,.36,1) forwards}
-.sbox{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1.5px solid var(--b1);border-radius:18px;padding:11px 16px;cursor:text;transition:border-color .18s,box-shadow .18s}
-.sbox:focus-within{border-color:rgba(79,156,249,.5);box-shadow:0 0 0 3px rgba(79,156,249,.09)}
-.sicon{color:var(--t3);flex-shrink:0;transition:color .18s}
-.sbox:focus-within .sicon{color:var(--acc)}
-.sicon svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
-.sinput{flex:1;background:transparent;border:none;outline:none;color:var(--t1);font-size:.95rem;font-family:${font.family};caret-color:var(--acc)}
-.sinput::placeholder{color:var(--t3)}
-.ebadge{padding:3px 9px;border-radius:7px;background:rgba(79,156,249,.1);border:1px solid rgba(79,156,249,.2);font-size:.66rem;font-weight:700;color:var(--acc);white-space:nowrap;flex-shrink:0;font-family:${font.family};transition:all .18s}
-.sbox:focus-within .ebadge{background:rgba(79,156,249,.18);border-color:rgba(79,156,249,.35)}
-.shortcuts{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;width:100%;max-width:500px;padding:0 20px;opacity:0;animation:fade-up .4s .18s cubic-bezier(.22,1,.36,1) forwards}
-.sc{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border-radius:13px;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.05);cursor:pointer;user-select:none;position:relative;overflow:hidden;transition:background .18s,border-color .18s,transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s}
-.sc::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(79,156,249,.13),transparent);opacity:0;transition:opacity .18s}
-.sc:hover::before{opacity:1}
-.sc:hover{background:rgba(79,156,249,.07);border-color:rgba(79,156,249,.3);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.28)}
-.sc:active{transform:translateY(-1px);transition-duration:.07s}
-.sc-icon{width:34px;height:34px;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
-.sc:hover .sc-icon{transform:scale(1.1)}
-.sc-icon img{width:24px;height:24px;object-fit:contain;display:block}
-.sc-label{font-size:.58rem;font-weight:600;color:var(--t3);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:56px;font-family:${font.family};transition:color .18s}
-.sc:hover .sc-label{color:var(--t2)}
-</style></head><body>
-<div class="logo-wrap">
-  <div class="logo-svg">
-    <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-      <defs>
-        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4f9cf9"/><stop offset="100%" stop-color="#6dd5b0"/></linearGradient>
-        <linearGradient id="g2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#6dd5b0"/><stop offset="100%" stop-color="#4f9cf9"/></linearGradient>
-      </defs>
-      <ellipse cx="26" cy="26" rx="22" ry="7.5" stroke="url(#g1)" stroke-width="2" fill="none" class="ring-o"/>
-      <ellipse cx="26" cy="26" rx="7.5" ry="22" stroke="url(#g2)" stroke-width="2" fill="none" class="ring-m"/>
-      <ellipse cx="26" cy="26" rx="13" ry="13" stroke="url(#g1)" stroke-width="1.4" fill="none" stroke-dasharray="5 4" class="ring-i" opacity=".5"/>
-      <circle cx="26" cy="26" r="5" fill="url(#g1)"/>
-    </svg>
-  </div>
-  <div class="logo-text">Gyro Proxy</div>
-  <div class="logo-sub">Private Browsing</div>
-</div>
-<div class="search-wrap">
-  <div class="sbox" id="sbox">
-    <span class="sicon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-    <input id="q" class="sinput" placeholder="Search or enter a URL\u2026" autocomplete="off" spellcheck="false" autofocus>
-    <div class="ebadge">${engLabel}</div>
-  </div>
-</div>
-<div class="shortcuts">${scHtml}</div>
-<script>
-function navTo(url){
-  try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:'pxNavigate',url:url},'*');return;}}catch(e){}
-  location.href=url;
-}
-document.getElementById('q').addEventListener('keydown',function(e){
-  if(e.key!=='Enter')return;
-  e.preventDefault();
-  var v=this.value.trim();
-  if(!v)return;
-  navTo(v);
-  this.value='';
-});
-document.getElementById('sbox').addEventListener('click',function(){document.getElementById('q').focus();});
-window.addEventListener('message',function(e){
-  if(e.data&&e.data.type==='pxNtRefresh'){ location.reload(); }
-});
-<\/script></body></html>`;
-}
-
-// ── Tab management ───────────────────────────────────────────
-function pxNavigate(input) {
-  const t = pxGetActive(); if (!t || !input) return;
-  input = input.trim(); if (!input) return;
-  if (!/^https?:\/\//.test(input)) {
-    const isUrl = /^[a-zA-Z0-9-]+\.[a-z]{2,}([\/:]|$)/.test(input) && !input.includes(' ');
-    input = isUrl ? 'https://' + input : (PX_SEARCH_ENGINES[pxSearchEngine] || PX_SEARCH_ENGINES.duckduckgo)(input);
-  }
-  t.url = input; t.loading = true;
-  if (!t._nav) { t.hist = t.hist.slice(0, t.hi+1); t.hist.push(input); t.hi = t.hist.length-1; }
-  try { const h = new URL(input).hostname; t.title = h; t.favicon = `https://www.google.com/s2/favicons?domain=${h}&sz=32`; } catch {}
-  pxSetLoading(true); pxSetLoadBar(12);
-  pxRenderTabs(); pxUpdateAddr();
-  clearTimeout(t._fallT);
-  t._fallT = setTimeout(()=>{ if(t.loading){t.loading=false;if(t.id===pxActiveId){pxSetLoading(false);pxSetLoadBar(100);}pxRenderTabs();} }, 15000);
-  t.frame.go(input);
-}
-
-function pxOnUrl(t, url) {
-  if (!url || url === 'about:srcdoc' || url === 'about:blank') return;
-  t.url = url;
-  if (!t._nav) { t.hist = t.hist.slice(0, t.hi+1); t.hist.push(url); t.hi = t.hist.length-1; }
-  t.loading = true;
-  if (t.id === pxActiveId) { pxSetLoading(true); pxUpdateAddr(); }
-  try { const h = new URL(url).hostname; t.title = h; t.favicon = `https://www.google.com/s2/favicons?domain=${h}&sz=32`; }
-  catch { t.title = 'Browsing'; t.favicon = null; }
-  pxRenderTabs(); pxSetLoadBar(15);
-  clearTimeout(t._fallT);
-  t._fallT = setTimeout(()=>{ if(t.loading){t.loading=false;if(t.id===pxActiveId){pxSetLoading(false);pxSetLoadBar(100);}pxRenderTabs();} }, 15000);
-}
-
-function pxOnLoad(t) {
-  t.loading = false; clearTimeout(t._skipT); clearTimeout(t._fallT);
-  if (t.id === pxActiveId) { pxSetLoading(false); pxSetLoadBar(100); }
-  try { const title = t.frame.frame.contentWindow.document.title; if(title && title !== 'New Tab') t.title = title; } catch {}
-  let href = ''; try { href = t.frame.frame.contentWindow?.location?.href || ''; } catch {}
-  if (!href || href === 'about:srcdoc' || href === 'about:blank') { t.title='New Tab'; t.url=''; t.favicon=null; }
-  pxRenderTabs(); pxUpdateAddr();
-}
-
-function pxCreateTab(activate = true) {
-  if (!pxCanAddTab()) return;
-  if (!pxScramjet) { console.error('[Gyro] Scramjet not ready'); return; }
-  const frame = pxScramjet.createFrame();
-  const t = { id:pxNextId++, title:'New Tab', url:'', frame, loading:false, favicon:null,
-               hist:['nt'], hi:0, _nav:false, _skipT:null, _fallT:null };
-  // Order matters: append to DOM first, then add listeners, then set srcdoc
-  const container = document.getElementById('px-frames');
-  frame.frame.setAttribute('referrerpolicy', 'no-referrer');
-  frame.frame.style.cssText = 'width:100%;height:100%;border:none;position:absolute;top:0;left:0;';
-  container.appendChild(frame.frame);
-  frame.frame.addEventListener('load', () => pxOnLoad(t));
-  frame.addEventListener('urlchange', e => pxOnUrl(t, e.url));
-  pxTabs.push(t);
-  // Set srcdoc last so load event fires after listener is registered
-  requestAnimationFrame(() => { frame.frame.srcdoc = window.__pxNtHtml || ''; });
-  if (activate) pxSwitchTab(t.id);
-  return t;
-}
-
-function pxGoNt(t) {
-  if (!t) return;
-  t.loading = false; t.title = 'New Tab'; t.url = ''; t.favicon = null;
-  t.frame.frame.srcdoc = window.__pxNtHtml || '';
-  if (t.id === pxActiveId) pxSetLoading(false);
-  pxRenderTabs(); pxUpdateAddr();
-}
-
-function pxSwitchTab(id) {
-  pxActiveId = id;
-  pxTabs.forEach(t => t.frame.frame.classList.toggle('hidden', t.id !== id));
-  const t = pxGetActive();
-  pxSetLoading(t?.loading || false);
-  pxRenderTabs(); pxUpdateAddr();
-}
-
-function pxCloseTab(id) {
-  const idx = pxTabs.findIndex(t => t.id === id); if (idx === -1) return;
-  const t = pxTabs[idx];
-  clearTimeout(t._skipT); clearTimeout(t._fallT);
-  try { t.frame.frame.src = 'about:blank'; t.frame.frame.remove(); } catch {}
-  pxTabs.splice(idx, 1);
-  if (pxActiveId === id) {
-    if (pxTabs.length) pxSwitchTab(pxTabs[Math.max(0, idx-1)].id);
-    else pxCreateTab(true);
-  } else pxRenderTabs();
-}
-
-function pxRenderTabs() {
-  const bar = document.getElementById('px-tabs'); if (!bar) return;
-  bar.innerHTML = '';
-  pxTabs.forEach(t => {
-    const el = document.createElement('div');
-    el.className = 'px-tab' + (t.id === pxActiveId ? ' active' : '');
-    el.draggable = true;
-    const icon = t.loading ? `<div class="px-tab-spinner"></div>`
-      : t.favicon ? `<img src="${t.favicon}" class="px-tab-favicon" onerror="this.style.display='none'">` : '';
-    el.innerHTML = `${icon}<span class="px-tab-title">${t.title}</span><span class="px-tab-close">&times;</span>`;
-    el.onclick = () => pxSwitchTab(t.id);
-    el.querySelector('.px-tab-close').onclick = e => { e.stopPropagation(); pxCloseTab(t.id); };
-    el.addEventListener('dragstart', e => { pxDragSrc=t.id; e.dataTransfer.effectAllowed='move'; setTimeout(()=>el.style.opacity='.4',0); });
-    el.addEventListener('dragend', () => { el.style.opacity=''; bar.querySelectorAll('.px-tab').forEach(x=>x.classList.remove('drag-over')); });
-    el.addEventListener('dragover', e => { e.preventDefault(); if(t.id!==pxDragSrc)el.classList.add('drag-over'); });
-    el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
-    el.addEventListener('drop', e => {
-      e.preventDefault(); el.classList.remove('drag-over');
-      if (pxDragSrc===null||pxDragSrc===t.id) return;
-      const fi=pxTabs.findIndex(x=>x.id===pxDragSrc), ti=pxTabs.findIndex(x=>x.id===t.id);
-      if(fi===-1||ti===-1)return;
-      const [mv]=pxTabs.splice(fi,1); pxTabs.splice(ti,0,mv);
-      pxDragSrc=null; pxRenderTabs();
-    });
-    bar.appendChild(el);
-  });
-  const btn = document.createElement('button');
-  btn.className = 'px-new-tab-btn';
-  btn.title = 'New Tab';
-  btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`;
-  btn.onclick = () => pxCreateTab(true);
-  btn.disabled = !pxCanAddTab();
-  bar.appendChild(btn);
-}
-
-function pxUpdateAddr() {
-  const bar = document.getElementById('px-addr'), t = pxGetActive();
-  if (bar && t) bar.value = (t.url && t.url !== 'about:srcdoc') ? t.url : '';
-}
-
-function pxSetLoading(on) {
-  const wrap = document.getElementById('px-addr-wrap');
-  if (wrap) wrap.classList.toggle('loading', on);
-}
-
-function pxSetLoadBar(pct) {
-  const b = document.getElementById('px-load-bar'); if (!b) return;
-  b.style.width = pct + '%'; b.style.opacity = pct === 100 ? '0' : '1';
-  if (pct === 100) setTimeout(()=>{ b.style.width='0%'; }, 250);
-}
-
-// ── Fullscreen ───────────────────────────────────────────────
-let pxFullscreen = false;
-let pxFsHoverTimer = null;
-let pxFsHideTimer = null;
-
-function pxFsEnterIcon() {
-  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
-}
-function pxFsExitIcon() {
-  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>`;
-}
-
-function pxShowFsBar(show) {
-  const nav = document.getElementById('px-nav');
-  if (!nav) return;
-  if (show) {
-    nav.classList.add('px-nav-visible');
-    // Auto-hide after 3s of no movement
-    clearTimeout(pxFsHideTimer);
-    pxFsHideTimer = setTimeout(() => nav.classList.remove('px-nav-visible'), 3000);
-  } else {
-    nav.classList.remove('px-nav-visible');
-  }
-}
-
-function pxEnterFullscreen() {
-  const view = document.getElementById('view-proxy');
-  const fs = view.requestFullscreen || view.webkitRequestFullscreen || view.mozRequestFullScreen;
-  if (fs) fs.call(view).catch(()=>{});
-}
-
-function pxExitFullscreen() {
-  const ex = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen;
-  if (ex) ex.call(document).catch(()=>{});
-}
-
-function pxToggleFullscreen() {
-  const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
-  if (fsEl) pxExitFullscreen(); else pxEnterFullscreen();
-}
-
-// Listen for native fullscreen change to update button + class
-function pxSetupFsHover() {
-  const onFsChange = () => {
-    const view = document.getElementById('view-proxy');
-    const btn  = document.getElementById('px-fs-btn');
-    const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
-    pxFullscreen = !!(fsEl && (fsEl === view || view.contains(fsEl)));
-    if (pxFullscreen) {
-      view.classList.add('px-fs-active');
-      if (btn) { btn.innerHTML = pxFsExitIcon(); btn.title = 'Exit Fullscreen'; }
-      // Show bar briefly on enter
-      pxShowFsBar(true);
-    } else {
-      view.classList.remove('px-fs-active');
-      const nav = document.getElementById('px-nav');
-      if (nav) nav.classList.remove('px-nav-visible');
-      if (btn) { btn.innerHTML = pxFsEnterIcon(); btn.title = 'Fullscreen'; }
-    }
-  };
-  document.addEventListener('fullscreenchange', onFsChange);
-  document.addEventListener('webkitfullscreenchange', onFsChange);
-
-  // Hover zone: mouse at very top for 2s → show bar
-  const zone = document.getElementById('px-fs-hover-zone');
-  if (zone) {
-    zone.addEventListener('mouseenter', () => {
-      if (!pxFullscreen) return;
-      pxFsHoverTimer = setTimeout(() => pxShowFsBar(true), 2000);
-    });
-    zone.addEventListener('mouseleave', () => {
-      clearTimeout(pxFsHoverTimer);
-    });
-  }
-  // Moving into nav area resets the auto-hide
-  document.addEventListener('mousemove', e => {
-    if (!pxFullscreen) return;
-    const nav = document.getElementById('px-nav');
-    if (!nav) return;
-    if (e.clientY < 60 && nav.classList.contains('px-nav-visible')) {
-      clearTimeout(pxFsHideTimer);
-      pxFsHideTimer = setTimeout(() => nav.classList.remove('px-nav-visible'), 3000);
-    }
-  });
-}
-
-// ── Server management ────────────────────────────────────────
-function pxRenderServers() {
-  const list = document.getElementById('px-server-list'); if (!list) return;
-  list.innerHTML = '';
-  const cur = window.__pxWispCache || PX_DEFAULT_WISP;
-  pxAllServers().forEach((s, i) => {
-    const isCustom = i >= PX_WISP_SERVERS.length;
-    const active = s.url === cur;
-    const el = document.createElement('div');
-    el.className = 'px-server-item' + (active ? ' active' : '');
-    el.innerHTML = `
-      <div class="px-server-item-top">
-        <span class="px-server-name">${s.name}${active?' ✓':''}</span>
-        <div class="px-server-right">
-          <span class="px-ping-text" id="px-ping-${i}">…</span>
-          <div class="px-status-dot" id="px-dot-${i}"></div>
-          ${isCustom?`<button class="px-del-btn" onclick="event.stopPropagation();pxDeleteWisp('${s.url}')">✕</button>`:''}
-        </div>
-      </div>
-      <div class="px-server-url">${s.url}</div>`;
-    el.onclick = () => { if (!active) pxSetWisp(s.url); };
-    list.appendChild(el);
-    // Ping
-    pxPing(s.url, 3000).then(r => {
-      const dot = document.getElementById(`px-dot-${i}`);
-      const ping = document.getElementById(`px-ping-${i}`);
-      if (!dot || !ping) return;
-      dot.style.background = r.ok ? 'var(--acc)' : '#f87171';
-      ping.textContent = r.ok ? r.ms + 'ms' : 'offline';
-      ping.style.color = r.ok ? 'var(--acc)' : '#f87171';
-    });
-  });
-}
-
-function pxSetWisp(url) {
-  window.__pxWispCache = url;
-  DB.setMisc('gyro_px_wisp', url).catch(()=>{});
-  pxConnReady = false; // force reconnect
-  proxyBooted = false;
-  toast('Switching server…', 1500);
-  setTimeout(() => proxyInit(), 400);
-}
-
-window.pxDeleteWisp = function(url) {
-  if (!confirm('Remove this custom server?')) return;
-  const updated = pxGetCustomWisps().filter(w => w.url !== url);
-  window.__pxCustomWisps = updated;
-  DB.setMisc('gyro_px_custom_wisps', JSON.stringify(updated)).catch(()=>{});
-  if ((window.__pxWispCache || PX_DEFAULT_WISP) === url) pxSetWisp(PX_DEFAULT_WISP);
-  else pxRenderServers();
-};
-
-window.pxAddCustomWisp = function() {
-  const inp = document.getElementById('px-custom-input'); if (!inp) return;
-  const url = inp.value.trim(); if (!url) return;
-  if (!url.startsWith('ws://') && !url.startsWith('wss://')) { toast('URL must start with wss://', 2500); return; }
-  const stored = pxGetCustomWisps();
-  if ([...PX_WISP_SERVERS, ...stored].some(w => w.url === url)) { toast('Server already added', 2000); return; }
-  stored.push({ name: 'Custom ' + (stored.length + 1), url });
-  window.__pxCustomWisps = stored;
-  DB.setMisc('gyro_px_custom_wisps', JSON.stringify(stored)).catch(()=>{});
-  pxSetWisp(url);
-  inp.value = '';
-};
-
-// ── Search engine ────────────────────────────────────────────
-function pxRenderEngines() {
-  const grid = document.getElementById('px-engine-grid'); if (!grid) return;
-  grid.querySelectorAll('.px-engine-pill').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.engine === pxSearchEngine);
-    btn.onclick = () => {
-      pxSearchEngine = btn.dataset.engine;
-      DB.setMisc('gyro_px_engine', pxSearchEngine).catch(()=>{});
-      window.__pxNtHtml = pxMakeNtHtml();
-      pxTabs.forEach(t => { if (!t.url || t.title==='New Tab') { t.frame.frame.srcdoc = window.__pxNtHtml; t.url=''; } });
-      pxRenderEngines();
-    };
-  });
-}
-
-// ── Main settings open (used by toolbar gear button) ─────────
-function pxOpenSettings() {
-  if (typeof openSettings === 'function') {
-    openSettings();
-    setTimeout(() => {
-      const btn = document.querySelector('.modal-nav-item[data-tab="proxy"]');
-      if (btn) btn.click();
-    }, 60);
-  }
-}
-
-// ── Build UI ─────────────────────────────────────────────────
-function pxBuildUI() {
-  const mount = document.getElementById('px-mount');
-  mount.innerHTML = `
-    <div id="px-fs-hover-zone"></div>
-    <div id="px-nav" style="display:flex;flex-direction:column;background:var(--surf);border-bottom:1px solid var(--b1);transition:transform .22s cubic-bezier(.4,0,.2,1),opacity .18s ease;z-index:10;position:relative">
-      <div id="px-tabs" style="display:flex;align-items:center;padding:4px 6px 0;gap:4px;overflow-x:auto;min-height:36px;scrollbar-width:none"></div>
-      <div style="display:flex;align-items:center;gap:6px;padding:5px 8px">
-        <button class="px-nav-btn" id="px-back-btn" title="Back"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <button class="px-nav-btn" id="px-fwd-btn"  title="Forward"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></button>
-        <button class="px-nav-btn" id="px-reload-btn" title="Reload"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></button>
-        <div class="px-addr-wrap" id="px-addr-wrap">
-          <input id="px-addr" autocomplete="off" spellcheck="false" placeholder="Search or enter a URL\u2026">
-          <div class="px-addr-spinner"></div>
-          <button class="px-addr-inner-btn" id="px-home-btn" title="New Tab">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </button>
-        </div>
-        <button class="px-nav-btn" id="px-server-btn" title="Proxy Settings" onclick="pxOpenSettings()">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-        </button>
-        <button class="px-nav-btn" id="px-theme-btn" title="Toggle theme" onclick="if(typeof applyTheme==='function'){applyTheme(currentTheme==='dark'?'light':'dark');if(typeof persistSave==='function')persistSave();}">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <button class="px-nav-btn" id="px-fs-btn" title="Fullscreen" onclick="pxToggleFullscreen()">${pxFsEnterIcon()}</button>
-      </div>
-      <div class="px-load-bar-wrap"><div id="px-load-bar" class="px-load-bar"></div></div>
-    </div>
-    <div id="px-frames" style="flex:1;position:relative;overflow:hidden;min-height:0"></div>`;
-
-  const bar = document.getElementById('px-addr');
-  bar.addEventListener('keydown', e => { if(e.key==='Enter'){e.preventDefault();pxNavigate(bar.value.trim());bar.blur();} });
-  bar.addEventListener('focus', () => bar.select());
-  document.getElementById('px-back-btn').onclick = () => {
-    const t = pxGetActive(); if(!t||t.hi<=0) return;
-    t._nav=true; t.hi--;
-    const tgt = t.hist[t.hi];
-    if (tgt==='nt') pxGoNt(t); else t.frame.go(tgt);
-    setTimeout(()=>{t._nav=false;},500);
-  };
-  document.getElementById('px-fwd-btn').onclick = () => {
-    const t = pxGetActive(); if(!t||t.hi>=t.hist.length-1) return;
-    t._nav=true; t.hi++;
-    const tgt = t.hist[t.hi];
-    if (tgt==='nt') pxGoNt(t); else t.frame.go(tgt);
-    setTimeout(()=>{t._nav=false;},500);
-  };
-  document.getElementById('px-reload-btn').onclick = () => pxGetActive()?.frame.reload();
-  document.getElementById('px-home-btn').onclick = () => pxGoNt(pxGetActive());
-
-  window.addEventListener('message', e => {
-    if (e.data?.type === 'pxNavigate') { const v = (e.data.url||'').trim(); if(v) pxNavigate(v); }
-    if (e.data?.type === 'pxSaveShortcuts') {
-      try { pxSaveShortcuts(JSON.parse(e.data.url)); window.__pxNtHtml = pxMakeNtHtml(); } catch {}
-    }
-  });
-
-  pxSetupFsHover();
-  pxCreateTab(true);
-}
-
-// ── Main init ────────────────────────────────────────────────
-async function proxyInit() {
-  // Load all DB caches
-  try {
-    const [eng, customWisps, wisp, shortcuts, font] = await Promise.all([
-      DB.getMisc('gyro_px_engine'),
-      DB.getMisc('gyro_px_custom_wisps'),
-      DB.getMisc('gyro_px_wisp'),
-      DB.getMisc('gyro_px_shortcuts'),
-      DB.getMisc('gyro_font'),
-    ]);
-    if (eng) pxSearchEngine = eng;
-    window.__pxCustomWisps = customWisps ? JSON.parse(customWisps) : [];
-    window.__pxFontCache = font || 'google-sans';
-    window.__pxShortcutsCache = shortcuts ? JSON.parse(shortcuts) : null;
-    // Dead-server guard
-    const _dead = ['wss://glseries.net/wisp/','wss://wispserver.dev/wisp/','wss://scram.owoellen.rocks/wisp/'];
-    window.__pxWispCache = (wisp && !_dead.includes(wisp)) ? wisp : null;
-  } catch(e) {
-    window.__pxCustomWisps = []; window.__pxFontCache = 'google-sans';
-    window.__pxShortcutsCache = null; window.__pxWispCache = null;
-  }
-
-  if (location.protocol === 'file:') {
-    document.getElementById('px-file-error').style.display = 'flex';
-    document.getElementById('px-mount').style.display = 'none';
-    return;
-  }
-
-  const mount = document.getElementById('px-mount');
-  if (!mount) return;
-
-  // Init steps UI
-  mount.innerHTML = `
-    <div style="display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:var(--bg)">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:8px">
-        <svg width="40" height="40" viewBox="0 0 52 52" fill="none">
-          <defs><linearGradient id="pxig" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4f9cf9"/><stop offset="100%" stop-color="#6dd5b0"/></linearGradient></defs>
-          <ellipse cx="26" cy="26" rx="22" ry="7.5" stroke="url(#pxig)" stroke-width="2" fill="none" style="transform-origin:26px 26px;animation:ring-spin-o 9s linear infinite"/>
-          <ellipse cx="26" cy="26" rx="7.5" ry="22" stroke="url(#pxig)" stroke-width="2" fill="none" style="transform-origin:26px 26px;animation:ring-spin-m 6s linear infinite"/>
-          <circle cx="26" cy="26" r="5" fill="url(#pxig)"/>
-        </svg>
-        <div style="font-size:.9rem;font-weight:700;color:var(--t1);letter-spacing:-.2px">Starting Gyro Proxy</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:10px;width:260px" id="px-steps">
-        ${['pxs1','pxs2','pxs3','pxs4'].map((id,i)=>
-          `<div class="px-step" id="${id}">
-            <span class="px-step-icon">○</span>
-            <span class="px-step-text">${['Loading scripts','Finding best server','Connecting','Service worker'][i]}</span>
-          </div>`).join('')}
-      </div>
-      <div style="width:260px;height:2px;background:var(--elev);border-radius:1px;overflow:hidden">
-        <div id="px-init-bar" style="height:100%;background:var(--acc);width:0%;transition:width .3s ease;border-radius:1px"></div>
-      </div>
-    </div>`;
-
-  const mark = (id, state) => {
-    const row = document.getElementById(id); if (!row) return;
-    const icon = row.querySelector('.px-step-icon');
-    const bar = document.getElementById('px-init-bar');
-    const steps = ['pxs1','pxs2','pxs3','pxs4'];
-    const idx = steps.indexOf(id);
-    row.className = 'px-step ' + state;
-    if (state==='active') { icon.textContent='◌'; if(bar) bar.style.width=((idx/steps.length)*100)+'%'; }
-    if (state==='done')   { icon.textContent='✓'; if(bar) bar.style.width=(((idx+1)/steps.length)*100)+'%'; }
-  };
-
-  window.__pxNtHtml = pxMakeNtHtml();
-
-  try {
-    mark('pxs1','active');
-    await pxLoadScripts();
-    mark('pxs1','done');
-
-    mark('pxs2','active');
-    await pxFetchWispServers();
-    // If no cached wisp yet, set it to the fetched default
-    if (!window.__pxWispCache) window.__pxWispCache = PX_DEFAULT_WISP;
-    await pxPickBestServer();
-    mark('pxs2','done');
-
-    mark('pxs3','active');
-    await pxInitScramjet();
-    await pxInitConn();
-    mark('pxs3','done');
-
-    if ('serviceWorker' in navigator) {
-      mark('pxs4','active');
-      const reg = await navigator.serviceWorker.register(pxGetBasePath() + 'sw.js', { scope: pxGetBasePath() });
-      await navigator.serviceWorker.ready;
-      const wisp = window.__pxWispCache || PX_DEFAULT_WISP;
-      const cfg = { type:'config', wispurl: wisp, servers: pxAllServers(), autoswitch: true };
-      const send = () => (reg.active || navigator.serviceWorker.controller)?.postMessage(cfg);
-      send(); setTimeout(send, 500); setTimeout(send, 1500);
-      navigator.serviceWorker.addEventListener('message', e => {
-        if (e.data?.type==='wispChanged') { window.__pxWispCache = e.data.url; DB.setMisc('gyro_px_wisp', e.data.url).catch(()=>{}); toast('Proxy auto-switched to faster server', 2500); }
-      });
-      reg.update();
-      mark('pxs4','done');
-    }
-
-    proxyBooted = true;
-    pxBuildUI();
-  } catch(err) {
-    console.error('[Gyro Proxy] Init failed:', err);
-    const allS = pxAllServers();
-    const serverBtns = allS.map(s =>
-      `<button onclick="window.__pxWispCache='${s.url}';pxConnReady=false;DB.setMisc('gyro_px_wisp','${s.url}').catch(()=>{});proxyBooted=false;proxyInit()"
-        style="padding:8px 14px;background:var(--elev);border:1.5px solid var(--b1);border-radius:10px;color:var(--t2);font-family:var(--font);font-size:.82rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:space-between;width:100%;gap:8px;transition:all .15s"
-        onmouseover="this.style.borderColor='var(--acc)';this.style.color='var(--t1)';this.style.background='rgba(79,156,249,.07)'"
-        onmouseout="this.style.borderColor='var(--b1)';this.style.color='var(--t2)';this.style.background='var(--elev)'"
-      ><span>${s.name}</span><span style="opacity:.4;font-size:.7rem;font-weight:400">${s.url.replace('wss://','').replace('/wisp/','').slice(0,24)}</span></button>`
-    ).join('');
-    mount.innerHTML = `
-      <div style="display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px;text-align:center;background:var(--bg)">
-        <div style="font-size:2rem">⚠️</div>
-        <div style="font-size:1rem;font-weight:700;color:var(--t1)">Proxy Failed to Start</div>
-        <div style="font-size:.84rem;color:var(--t2);max-width:380px;line-height:1.7">${err.message||'Connection failed — the wisp server may be offline.'}</div>
-        <div style="font-size:.75rem;font-weight:700;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;margin-top:2px">Try a different server</div>
-        <div style="display:flex;flex-direction:column;gap:7px;width:100%;max-width:320px">${serverBtns}</div>
-        <div style="display:flex;gap:10px;margin-top:4px">
-          <button onclick="pxConnReady=false;proxyBooted=false;proxyInit()" style="padding:9px 24px;background:var(--acc);border:none;border-radius:10px;color:#fff;font-family:var(--font);font-size:.84rem;font-weight:700;cursor:pointer">Retry</button>
-        </div>
-      </div>`;
-  }
-}
-/* ── END GYRO PROXY ─────────────────────────────────────────────── */
 
 </script>
 
 
 </body>
+
+<!-- Achievement Toast -->
+<div id="ach-toast">
+  <div id="ach-toast-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 2h12v7a6 6 0 0 1-12 0V2z"/><path d="M9 18v3"/><path d="M15 18v3"/><path d="M7 21h10"/></svg>
+  </div>
+  <div id="ach-toast-body">
+    <div id="ach-toast-name">Achievement Unlocked</div>
+    <div id="ach-toast-desc"></div>
+  </div>
+</div>
+
+
+<script>
+/* ================================================================
+   ACHIEVEMENTS SYSTEM — trimmed, harder, no spam
+================================================================ */
+(function() {
+  const ACH_KEY      = 'gyro_achievements_v1';
+  const VISIT_KEY    = 'gyro_visit_count';
+  const LAST_VISIT_K = 'gyro_last_visit_ts';
+  const PROMPT_KEY   = 'gyro_total_prompts';
+  const GAMES_KEY    = 'gyro_games_time_ms';
+
+  // ── DEFINITIONS (12 achievements, all meaningfully hard) ──────
+  const ACHIEVEMENTS = [
+    {
+      id: 'loyal_10',
+      name: 'Signal Lock',
+      desc: 'Return to Gyro 10 separate times.',
+      icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>',
+    },
+    {
+      id: 'loyal_50',
+      name: 'Deep Orbit',
+      desc: 'Visit Gyro 50 times.',
+      icon: '<circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7" stroke-dasharray="3 2"/><circle cx="12" cy="12" r="11" stroke-dasharray="3 2" opacity=".4"/>',
+    },
+    {
+      id: 'chatter_100',
+      name: 'The Chatter',
+      desc: 'Send 100 or more messages to the AI.',
+      icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="12" y2="14"/>',
+    },
+    {
+      id: 'chatter_500',
+      name: 'Parasocial',
+      desc: 'Send 500 messages to the AI.',
+      icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/>',
+    },
+    {
+      id: 'gamer_30',
+      name: 'Just Browsing',
+      desc: 'Spend 30 minutes actively in the Games section (tab must stay focused).',
+      icon: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4"/><path d="M8 10v4"/><circle cx="15" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="17" cy="13" r="1" fill="currentColor" stroke="none"/>',
+    },
+    {
+      id: 'gamer_60',
+      name: 'The Gamer',
+      desc: 'Spend a full hour in the Games section without switching away.',
+      icon: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4"/><path d="M8 10v4"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="17" cy="12" r="1" fill="currentColor" stroke="none"/><path d="M14 9l4 3-4 3"/>',
+    },
+    {
+      id: 'night_owl',
+      name: 'Night Owl',
+      desc: 'Open Gyro between midnight and 4 AM.',
+      icon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+    },
+    {
+      id: 'came_back',
+      name: 'Checked Back In',
+      desc: 'Return to Gyro after being away for more than 7 days.',
+      icon: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><polyline points="12 7 12 12 15 15"/>',
+    },
+    {
+      id: 'shift_a',
+      name: 'Keyboard Warrior',
+      desc: 'Open Achievements using the Shift+A shortcut.',
+      icon: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M9 14l1.5-4 1.5 4"/><line x1="9.5" y1="12" x2="12.5" y2="12"/><line x1="16" y1="10" x2="16" y2="14"/>',
+      secret: true,
+    },
+    {
+      id: 'all_sections',
+      name: 'Full Sweep',
+      desc: 'Visit every section: Home, AI, Games, and TextCraft.',
+      icon: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+    },
+    {
+      id: 'completionist',
+      name: 'Orbital Lock',
+      desc: 'Unlock every non-secret achievement.',
+      icon: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+    },
+  ];
+
+  // ── STORAGE ──────────────────────────────────────────────────
+  function loadData() { try { return JSON.parse(localStorage.getItem(ACH_KEY)||'{}'); } catch { return {}; } }
+  function saveData(d) { localStorage.setItem(ACH_KEY, JSON.stringify(d)); }
+  function getVisits()  { return parseInt(localStorage.getItem(VISIT_KEY)||'0'); }
+  function getPrompts() { return parseInt(localStorage.getItem(PROMPT_KEY)||'0'); }
+  function getGamesMs() { return parseInt(localStorage.getItem(GAMES_KEY)||'0'); }
+
+  // ── TOAST QUEUE ───────────────────────────────────────────────
+  let _toastTimer = null;
+  let _toastQueue = [];
+  let _toastBusy  = false;
+
+  function processToastQueue() {
+    if (_toastBusy || _toastQueue.length === 0) return;
+    _toastBusy = true;
+    const ach = _toastQueue.shift();
+    const toast = document.getElementById('ach-toast');
+    const iconEl = document.getElementById('ach-toast-icon');
+    const nameEl = document.getElementById('ach-toast-name');
+    const descEl = document.getElementById('ach-toast-desc');
+    if (!toast) { _toastBusy = false; return; }
+    if (iconEl) iconEl.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + ach.icon + '</svg>';
+    if (nameEl) nameEl.textContent = ach.name;
+    if (descEl) descEl.textContent = ach.desc;
+    toast.classList.remove('ach-hide');
+    void toast.offsetWidth;
+    toast.classList.add('ach-show');
+    toast.onclick = function() { switchView('achievements'); dismissToast(); };
+    if (_toastTimer) clearTimeout(_toastTimer);
+    _toastTimer = setTimeout(function() {
+      dismissToast();
+      setTimeout(function() { _toastBusy = false; processToastQueue(); }, 500);
+    }, 5000);
+  }
+
+  function showAchToast(ach) {
+    _toastQueue.push(ach);
+    setTimeout(processToastQueue, 900);
+  }
+
+  function dismissToast() {
+    if (_toastTimer) { clearTimeout(_toastTimer); _toastTimer = null; }
+    const toast = document.getElementById('ach-toast');
+    if (!toast) return;
+    toast.classList.remove('ach-show');
+    toast.classList.add('ach-hide');
+  }
+
+  // ── UNLOCK ────────────────────────────────────────────────────
+  function unlock(id, silent) {
+    const ach = ACHIEVEMENTS.find(function(a) { return a.id === id; });
+    if (!ach) return false;
+    const data = loadData();
+    if (data[id]) return false;
+    data[id] = Date.now();
+    saveData(data);
+    if (!silent) showAchToast(ach);
+    // Completionist check (always silent to avoid double-toast)
+    const nonSecret = ACHIEVEMENTS.filter(function(a) { return a.id !== 'completionist' && !a.secret; });
+    const d2 = loadData();
+    if (nonSecret.every(function(a) { return d2[a.id]; })) unlock('completionist');
+    renderAchievements();
+    return true;
+  }
+
+  // ── RENDER ────────────────────────────────────────────────────
+  function renderAchievements() {
+    const uGrid = document.getElementById('ach-grid-unlocked');
+    const lGrid = document.getElementById('ach-grid-locked');
+    if (!uGrid || !lGrid) { requestAnimationFrame(renderAchievements); return; }
+
+    const fillEl  = document.getElementById('ach-progress-bar-fill');
+    const labelEl = document.getElementById('ach-progress-label');
+    const data     = loadData();
+    const unlocked = ACHIEVEMENTS.filter(function(a) { return data[a.id]; });
+    const locked   = ACHIEVEMENTS.filter(function(a) { return !data[a.id]; });
+
+    if (fillEl)  fillEl.style.width  = (unlocked.length / ACHIEVEMENTS.length * 100) + '%';
+    if (labelEl) labelEl.textContent = unlocked.length + ' / ' + ACHIEVEMENTS.length;
+
+    function makeCard(ach, isUnlocked) {
+      const ts = data[ach.id];
+      const dateStr = ts ? new Date(ts).toLocaleDateString() : '';
+      const div = document.createElement('div');
+      div.className = 'ach-card ' + (isUnlocked ? 'unlocked' : 'locked');
+      div.innerHTML =
+        '<div class="ach-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + ach.icon + '</svg></div>' +
+        '<div class="ach-card-name">' + ach.name + '</div>' +
+        '<div class="ach-card-desc">' + (isUnlocked ? ach.desc : (ach.secret ? 'Secret — keep exploring.' : ach.desc)) + '</div>' +
+        (isUnlocked && dateStr ? '<div class="ach-card-date">' + dateStr + '</div>' : '');
+      return div;
+    }
+
+    uGrid.innerHTML = ''; lGrid.innerHTML = '';
+    if (unlocked.length > 0) {
+      const lab = document.createElement('div'); lab.className = 'ach-section-label';
+      lab.textContent = 'Unlocked — ' + unlocked.length;
+      uGrid.appendChild(lab);
+      const g = document.createElement('div'); g.className = 'ach-grid';
+      unlocked.forEach(function(a) { g.appendChild(makeCard(a, true)); });
+      uGrid.appendChild(g);
+    }
+    if (locked.length > 0) {
+      const lab = document.createElement('div'); lab.className = 'ach-section-label';
+      lab.textContent = 'Locked — ' + locked.length;
+      lGrid.appendChild(lab);
+      const g = document.createElement('div'); g.className = 'ach-grid';
+      locked.forEach(function(a) { g.appendChild(makeCard(a, false)); });
+      lGrid.appendChild(g);
+    }
+  }
+
+  // ── CONDITION CHECK ───────────────────────────────────────────
+  function checkConditions(silent) {
+    const v = getVisits(), p = getPrompts(), g = getGamesMs();
+    if (v >= 10)  unlock('loyal_10',  silent);
+    if (v >= 50)  unlock('loyal_50',  silent);
+    if (p >= 100) unlock('chatter_100', silent);
+    if (p >= 500) unlock('chatter_500', silent);
+    if (g >= 30*60*1000) unlock('gamer_30', silent);
+    if (g >= 60*60*1000) unlock('gamer_60', silent);
+  }
+
+  // ── GAMES TIME TRACKING ───────────────────────────────────────
+  let _gamesStart = null;
+
+  function startGames() { if (_gamesStart === null) _gamesStart = Date.now(); }
+  function pauseGames() {
+    if (_gamesStart === null) return;
+    const t = getGamesMs() + (Date.now() - _gamesStart);
+    localStorage.setItem(GAMES_KEY, t);
+    _gamesStart = null;
+    checkConditions(false); // NOT silent — earned for real
+  }
+  document.addEventListener('visibilitychange', function() {
+    const cur = (document.querySelector('.gyro-view.active') || {}).id;
+    if (cur === 'view-games') {
+      if (document.hidden) pauseGames(); else startGames();
+    }
+  });
+
+  // ── ON-LOAD ───────────────────────────────────────────────────
+  const now       = Date.now();
+  const lastVisit = parseInt(localStorage.getItem(LAST_VISIT_K)||'0');
+  const visits    = getVisits() + 1;
+  localStorage.setItem(VISIT_KEY, visits);
+  localStorage.setItem(LAST_VISIT_K, now);
+
+  // Thresholds that were already crossed → silent
+  checkConditions(true);
+
+  // Exact crossing → toast
+  if (visits === 10) unlock('loyal_10');
+  if (visits === 50) unlock('loyal_50');
+
+  // Came back after 7+ days
+  if (lastVisit > 0 && (now - lastVisit) >= 7 * 24 * 60 * 60 * 1000) unlock('came_back');
+
+  // Time of day — only toasts the very first time
+  if (new Date().getHours() < 4) unlock('night_owl');
+
+  // ── EXPOSE API ────────────────────────────────────────────────
+  window.__gyroAch = {
+    unlock: unlock,
+    render: renderAchievements,
+    startGames: startGames,
+    pauseGames: pauseGames,
+    promptSent: function() {
+      const n = getPrompts() + 1;
+      localStorage.setItem(PROMPT_KEY, n);
+      if (n === 100) unlock('chatter_100');
+      if (n === 500) unlock('chatter_500');
+    },
+    sectionVisited: function(id) {
+      let v = [];
+      try { v = JSON.parse(localStorage.getItem('gyro_sections_visited')||'[]'); } catch {}
+      if (!v.includes(id)) { v.push(id); localStorage.setItem('gyro_sections_visited', JSON.stringify(v)); }
+      const need = ['home','ai','games','textcraft'];
+      if (need.every(function(s) { return v.includes(s); })) unlock('all_sections');
+    },
+    onShiftA: function() { unlock('shift_a'); },
+    reset: function() {
+      // Called after clear-all — re-render from freshly-wiped localStorage
+      renderAchievements();
+    },
+  };
+})();
+
+/* ================================================================
+   PATCH: switchView, sendMessage, openSettings wiring
+================================================================ */
+(function() {
+  const _origSW = window.switchView;
+  let _prevView = null;
+
+  window.switchView = function(view) {
+    if (_prevView === 'games' && view !== 'games' && window.__gyroAch) window.__gyroAch.pauseGames();
+    if (_origSW) _origSW(view);
+    if (view === 'games' && !document.hidden && window.__gyroAch) window.__gyroAch.startGames();
+    if (window.__gyroAch) {
+      window.__gyroAch.sectionVisited(view);
+      if (view === 'achievements') { window.__gyroAch.render(); }
+    }
+    _prevView = view;
+  };
+
+  // openSettings hook already exists in main JS
+})();
+
+/* ================================================================
+   KEYBOARD SHORTCUT: Shift+A → Achievements
+================================================================ */
+document.addEventListener('keydown', function(e) {
+  if (e.shiftKey && e.key === 'A' && !e.ctrlKey && !e.altKey && !e.metaKey) {
+    const t = document.activeElement;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')) return;
+    switchView('achievements');
+    if (window.__gyroAch) window.__gyroAch.onShiftA();
+  }
+});
+</script>
