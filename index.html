@@ -5343,28 +5343,38 @@ const _settingsBtn=document.getElementById('settingsBtn');if(_settingsBtn)_setti
   }
 })();
 async function downloadGyro(){
+  // Try jsDelivr CDN first (CORS-friendly, cached), then raw GitHub, then local fallback
+  const JSDELIVR='https://cdn.jsdelivr.net/gh/blockblitz-tech/gyro@main/index.html';
   const RAW='https://raw.githubusercontent.com/blockblitz-tech/gyro/main/index.html';
-  toast('Fetching latest Gyro…',2200);
-  try{
-    const res=await fetch(RAW);
+  toast('Fetching latest Gyro…',2500);
+  const tryFetch=async(url)=>{
+    const res=await fetch(url);
     if(!res.ok) throw new Error('HTTP '+res.status);
-    const html=await res.text();
+    return res.text();
+  };
+  const doDownload=(html)=>{
     const blob=new Blob([html],{type:'text/html'});
     const url=URL.createObjectURL(blob);
     const a=document.createElement('a');
     a.href=url;a.download='gyro.html';a.click();
     setTimeout(()=>URL.revokeObjectURL(url),3000);
+  };
+  try{
+    const html=await tryFetch(JSDELIVR);
+    doDownload(html);
     toast('Downloaded latest Gyro ✓',1800);
-  }catch(err){
-    // Fallback: download current page if fetch fails
-    console.warn('Remote fetch failed, using local copy:',err);
-    const src=document.documentElement.outerHTML;
-    const blob=new Blob(['<!DOCTYPE html>\n'+src],{type:'text/html'});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');
-    a.href=url;a.download='gyro.html';a.click();
-    setTimeout(()=>URL.revokeObjectURL(url),2000);
-    toast('Downloaded Gyro (offline copy)',1800);
+  }catch(e1){
+    console.warn('jsDelivr failed, trying raw GitHub:',e1);
+    try{
+      const html=await tryFetch(RAW);
+      doDownload(html);
+      toast('Downloaded latest Gyro ✓',1800);
+    }catch(e2){
+      console.warn('Raw GitHub failed, using local copy:',e2);
+      const src=document.documentElement.outerHTML;
+      doDownload('<!DOCTYPE html>\n'+src);
+      toast('Downloaded Gyro (offline copy)',1800);
+    }
   }
 }
 document.getElementById('modalClose').onclick=closeSettings;
